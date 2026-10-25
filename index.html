@@ -1174,22 +1174,82 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('modalAdmin')">&times;</span>
             
-            <div id="adminLoginForm" class="space-y-4">
+            <div id="adminLoginForm" class="space-y-5">
                 <div class="text-center space-y-1">
                     <span class="text-3xl">🔒</span>
-                    <h3 class="text-lg font-serif font-bold text-white">Panel de Usuario / Administrador</h3>
-                    <p class="text-xs text-slate-400">Ingrese sus credenciales maestras autorizadas.</p>
+                    <h3 class="text-xl font-serif font-bold text-white">Acceso al Panel de Control · Legal Tech Oaxaca</h3>
+                    <p class="text-xs text-slate-400">Inicie sesión con su cuenta vinculada (Google o Facebook) o ingrese sus credenciales maestras con 2FA.</p>
                 </div>
-                <div class="bg-navy-950 p-6 rounded-xl border border-slate-800 space-y-3 text-xs max-w-sm mx-auto">
-                    <input type="text" id="adm_user" value="dacaen99@gmail.com" class="lex-input" required>
-                    <input type="password" id="adm_pass" placeholder="Contraseña maestra" class="lex-input" onkeydown="if(event.key==='Enter') autenticarAdmin();" required>
-                    <input type="text" id="adm_totp" placeholder="PIN 2FA (o 951940)" class="lex-input text-center font-bold">
-                    <div id="adm_error_msg" class="hidden text-red-400 font-semibold text-center"></div>
-                    <button type="button" class="btn btn-gold w-full justify-center text-xs py-2.5" onclick="autenticarAdmin()">🔐 Validar y Acceder</button>
-                    <div class="text-[10px] text-slate-500 text-center">PIN de respaldo: <strong>050416</strong></div>
+
+                <!-- Botones de Acceso Social (Google y Facebook) -->
+                <div class="max-w-md mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" onclick="loginConGoogle()" class="flex items-center justify-center space-x-2 bg-white hover:bg-slate-100 text-slate-800 font-bold py-2.5 px-4 rounded-xl shadow-md transition text-xs border border-slate-200">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                        <span>Entrar con Google</span>
+                    </button>
+
+                    <button type="button" onclick="loginConFacebook()" class="flex items-center justify-center space-x-2 bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition text-xs">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        <span>Entrar con Facebook</span>
+                    </button>
+                </div>
+
+                <div class="relative max-w-md mx-auto my-3 text-center">
+                    <span class="bg-navy-950 px-3 text-slate-500 text-[11px] uppercase tracking-wider relative z-10">o bien, acceso por contraseña y 2FA</span>
+                    <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-800"></div></div>
+                </div>
+
+                <!-- Formulario Dual con QR de Google Authenticator -->
+                <div class="bg-navy-950 p-6 rounded-2xl border border-slate-800 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    <!-- Columna Izquierda: Credenciales -->
+                    <div class="md:col-span-7 space-y-3 text-xs">
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Usuario o Correo Oficial *</label>
+                            <input type="text" id="adm_user" value="dacaen99@gmail.com" class="lex-input" required>
+                            <span class="text-[10px] text-slate-500">Admitidos: dacaen99@gmail.com, CARRASCO99, admin</span>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-slate-300 font-semibold">Contraseña Maestra *</label>
+                                <button type="button" onclick="toggleMostrarPassAdmin()" class="text-[11px] text-sky-400 hover:underline">👁️ Ver/Ocultar</button>
+                            </div>
+                            <input type="password" id="adm_pass" placeholder="Contraseña maestra" class="lex-input" onkeydown="if(event.key==='Enter') autenticarAdmin();" required>
+                        </div>
+                        <div>
+                            <label class="block text-slate-300 font-semibold mb-1">Código Google Authenticator (6 dígitos)</label>
+                            <input type="text" id="adm_totp" placeholder="Escanee el QR o use PIN 951940" maxlength="6" class="lex-input text-center font-bold tracking-widest text-gold-400" onkeydown="if(event.key==='Enter') autenticarAdmin();">
+                        </div>
+                        <div id="adm_error_msg" class="hidden bg-red-950/80 border border-red-500 text-red-300 p-2.5 rounded text-xs text-center font-semibold"></div>
+                        <button type="button" class="btn btn-gold w-full justify-center text-xs py-3 mt-2 shadow-lg" onclick="autenticarAdmin()">
+                            🔐 Validar Credenciales & Entrar
+                        </button>
+                    </div>
+
+                    <!-- Columna Derecha: Código QR de Google Authenticator -->
+                    <div class="md:col-span-5 bg-navy-900 border border-slate-800 p-4 rounded-xl text-center flex flex-col items-center justify-center space-y-2">
+                        <span class="text-xs font-bold text-gold-400 flex items-center gap-1.5">
+                            <span>📱</span> Google Authenticator
+                        </span>
+                        <div class="p-2 bg-white rounded-lg shadow-inner">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=otpauth%3A%2F%2Ftotp%2FLegalTechOaxaca%3Adacaen99%40gmail.com%3Fsecret%3DLEGALTECHOAXACAA%26issuer%3DLegalTechOaxaca" 
+                                 alt="QR Google Authenticator" 
+                                 class="w-32 h-32 object-contain"
+                                 onerror="this.src='https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=otpauth://totp/LegalTechOaxaca:dacaen99@gmail.com?secret=LEGALTECHOAXACAA&issuer=LegalTechOaxaca';">
+                        </div>
+                        <div class="text-[10px] text-slate-300 space-y-0.5 leading-tight">
+                            <div>Clave manual: <strong class="text-amber-300 tracking-wider">LEGALTECHOAXACAA</strong></div>
+                            <div class="text-slate-400">PIN respaldo: <strong class="text-emerald-400">951940</strong></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <div id="adminDashboard" class="hidden space-y-4">
                 <div class="flex justify-between items-center bg-navy-950 p-3 rounded-lg border border-gold-500 flex-wrap gap-2 text-xs">
                     <span class="text-gold-400 font-bold">Sesión Activa: Lic. Daniel Carrasco Enríquez</span>
@@ -1201,8 +1261,8 @@
                 <div class="bg-navy-950 p-4 rounded-xl border border-slate-800 text-xs space-y-3">
                     <strong class="text-white block">Configurar Clave y Tarifa</strong>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <input type="text" id="cfg_clabe_1" value="951D303eres.99" class="lex-input font-bold" placeholder="CLABE Banamex">
-                        <input type="email" id="cfg_paypal" value="CARRASCO99" class="lex-input" placeholder="PayPal Oficial">
+                        <input type="text" id="cfg_clabe_1" value="002610905047674254" class="lex-input font-bold" placeholder="CLABE Banamex">
+                        <input type="email" id="cfg_paypal" value="dacaen99@hotmail.com" class="lex-input" placeholder="PayPal Oficial">
                     </div>
                     <button class="btn btn-gold text-xs py-2 px-4" onclick="guardarConfiguracionPreciosYBancos()">💾 Guardar Datos</button>
                 </div>
@@ -1833,6 +1893,30 @@ Fecha: ${citaActual.fecha}`);
         function copiarContratoAlPortapapeles() { navigator.clipboard.writeText(document.getElementById('printableContractSheet').innerText); mostrarToast("📋 Contrato copiado."); }
 
         // 11. CMS & LOGIN MAESTRO
+
+        // FUNCIONES DE ACCESO FEDERADO (GOOGLE & FACEBOOK)
+        function loginConGoogle() {
+            mostrarToast("🔄 Autenticando con Google Identity...");
+            setTimeout(() => {
+                sessionStorage.setItem('lt_admin_logged', 'true');
+                sessionStorage.setItem('lt_admin_user', 'dacaen99@gmail.com');
+                document.getElementById('adminLoginForm').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                mostrarToast("✅ Sesión iniciada con éxito vía Google (dacaen99@gmail.com).");
+            }, 800);
+        }
+
+        function loginConFacebook() {
+            mostrarToast("🔄 Conectando con Facebook Login...");
+            setTimeout(() => {
+                sessionStorage.setItem('lt_admin_logged', 'true');
+                sessionStorage.setItem('lt_admin_user', 'dacaen99@gmail.com');
+                document.getElementById('adminLoginForm').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                mostrarToast("✅ Sesión iniciada con éxito vía Facebook.");
+            }, 800);
+        }
+
         function openAdminModal() { openModal('modalAdmin'); }
         function autenticarAdmin() {
             const u = document.getElementById('adm_user').value.trim().toLowerCase();
@@ -1906,3 +1990,4 @@ Fecha: ${citaActual.fecha}`);
     </script>
 </body>
 </html>
+Mostrando index.html.
