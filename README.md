@@ -1,2 +1,2 @@
-# LEGAL TECH OAXACA | RELEASE V5.0 MASTER
-Sitio Oficial Integral con Motor Omnicanal LexCore, Cero Paredes de Tope y Resiliencia de Red.
+# LEGAL TECH OAXACA | RELEASE V11.0
+Código 100% limpio sin conflictos de GitHub PR.
