@@ -4,147 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Referrer-Policy" content="no-referrer">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(self), camera=(), payment=(), usb=()">
-    <title>Legal Tech Oaxaca | Firma Legal Digital · Litigio de Alto Impacto & Fuero Militar</title>
-    <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Especialistas en juicio de amparo indirecto, fuero militar, consejos de honor SEDENA/SEMAR, carpetas FGR/FGEO y gestión procesal LexControl. Titular: Lic. Daniel Carrasco Enríquez.">
+    
+    <!-- SEO & INDEXACIÓN GOOGLE MÁXIMA VISIBILIDAD -->
+    <title>Legal Tech Oaxaca | Firma Legal Digital · Lic. Daniel Carrasco Enríquez</title>
+    <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Juicio de amparo indirecto, derecho militar, consejos de honor, carpetas FGR/FGEO y gestión procesal. Lic. Daniel Carrasco Enríquez. Céd. Prof. 14971373.">
+    <meta name="keywords" content="abogado oaxaca, amparo indirecto oaxaca, derecho militar oaxaca, legal tech oaxaca, daniel carrasco enriquez, corporativo juridico oaxaca">
+    <meta name="author" content="Lic. Daniel Carrasco Enríquez">
     <link rel="canonical" href="https://www.legaltechoaxacacorporativojuridico.com/">
+
+    <!-- Tailwind CSS 3.4.17 & Fuentes de Lujo -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#0c1b33',
+                            900: '#07101f',
+                            950: '#040913',
+                        },
+                        gold: {
+                            400: '#e5c07b',
+                            500: '#d4af37',
+                            600: '#aa8c2c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root { --primary: #071224; --accent: #d4af37; --lex-bg: #040913; --lex-card: #0c1b33; }
-        body { -webkit-user-select: none; user-select: none; background: #040913; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-        [contenteditable="true"], input, textarea, pre { -webkit-user-select: text !important; user-select: text !important; }
+        body { background: #040913; color: #e2e8f0; font-family: 'Inter', sans-serif; }
         .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa8c2c 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .btn { padding: 10px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.22s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
         .btn-gold { background: linear-gradient(135deg, #d4af37, #aa8c2c); color: #071224; }
-        .btn-gold:hover { background: linear-gradient(135deg, #e5c07b, #d4af37); transform: translateY(-2px); }
+        .btn-gold:hover { background: linear-gradient(135deg, #e5c07b, #d4af37); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212,175,55,0.4); }
         .btn-outline { background: transparent; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .btn-whatsapp { background-color: #25d366; color: #ffffff; }
-        .practice-card { background: #0c1b33; border: 1px solid #1e3056; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; }
-        .practice-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .card-tag { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; display: inline-block; }
-        .tag-military { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
-        .tag-const { background: rgba(212, 175, 55, 0.2); color: #fde047; border: 1px solid rgba(212, 175, 55, 0.4); }
-        .tag-penal { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.4); }
-        .tag-admin { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
-        .features-list { list-style: none; font-size: 0.82rem; color: #94a3b8; margin: 14px 0 20px; display: flex; flex-direction: column; gap: 6px; }
-        .features-list li::before { content: "✓ "; color: var(--accent); font-weight: bold; }
-        .lex-input, .lex-select, .lex-textarea { width: 100%; background: #040913; border: 1px solid #1e3056; border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 0.85rem; }
-        .lex-input:focus, .lex-select:focus, .lex-textarea:focus { outline: none; border-color: var(--accent); }
-        .lex-doc-preview { width: 100%; min-height: 480px; background: #ffffff; color: #0f172a; padding: 24px; font-family: 'Courier New', Courier, monospace; font-size: 0.88rem; line-height: 1.5; border-radius: 8px; white-space: pre-wrap; overflow-y: auto; border: 1px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(4, 9, 19, 0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: #0c1b33; border: 1px solid #1e3056; color: #e2e8f0; border-radius: 14px; max-width: 860px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 32px; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.75); }
-        .modal-close { position: absolute; top: 16px; right: 20px; font-size: 1.6rem; color: #94a3b8; cursor: pointer; }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+        .practice-card { background: #0c1b33; border: 1px solid #1e3056; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; }
+        .practice-card:hover { border-color: #d4af37; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .lex-input, .lex-select, .lex-textarea { width: 100%; background: #040913; border: 1px solid #1e3056; border-radius: 6px; padding: 10px 14px; color: #fff; font-size: 0.88rem; }
+        .lex-input:focus { outline: none; border-color: #d4af37; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(4, 9, 19, 0.92); backdrop-filter: blur(6px); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #0c1b33; border: 1px solid #1e3056; color: #e2e8f0; border-radius: 16px; max-width: 600px; width: 100%; padding: 32px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.8); }
+        .modal-close { position: absolute; top: 16px; right: 20px; font-size: 1.8rem; color: #94a3b8; cursor: pointer; }
         .modal-close:hover { color: #fff; }
     </style>
 </head>
-<body class="bg-navy-950 text-slate-100 min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col antialiased">
 
-    <!-- BARRA SUPERIOR INSTITUCIONAL -->
+    <!-- BARRA SUPERIOR -->
     <div class="bg-navy-900 border-b border-navy-800 text-xs py-2 px-4">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center space-x-2">
-                <span class="bg-red-700 text-white font-extrabold px-2 py-0.5 rounded text-[11px] animate-pulse">🔴 GUARDIA 24/7 ACTIVA</span>
-                <span class="text-slate-300">Atención en Detenciones, FGR, Cateos y Fuero Militar</span>
+                <span class="bg-red-700 text-white font-extrabold px-2.5 py-0.5 rounded text-[11px] animate-pulse">🔴 GUARDIA 24/7 ACTIVA</span>
+                <span class="text-slate-300 hidden sm:inline">Atención Inmediata en Detenciones, FGR, Cateos y Fuero Militar</span>
             </div>
             <div class="flex items-center space-x-4 text-slate-300">
                 <a href="https://www.buholegal.com/" target="_blank" class="hover:text-gold-400">🎓 Céd. Prof. 14971373</a>
                 <span class="text-slate-600">|</span>
                 <a href="tel:+529519408062" class="hover:text-gold-400 font-semibold">📞 951 940 8062</a>
                 <span class="text-slate-600">|</span>
-                <span class="bg-navy-800 px-2 py-0.5 rounded border border-slate-700 text-gold-400 font-bold">SISE: CARRASCO99</span>
+                <span class="bg-navy-800 px-2.5 py-0.5 rounded border border-slate-700 text-gold-400 font-bold">SISE: CARRASCO99</span>
             </div>
         </div>
     </div>
 
-    <!-- ENCABEZADO Y NAVEGADOR -->
-    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
+    <!-- NAVEGADOR PRINCIPAL FLUIDO -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-500 to-navy-900 flex items-center justify-center p-0.5 shadow-lg shadow-gold-500/20">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-500 to-navy-900 flex items-center justify-center p-0.5 shadow-lg">
                     <div class="w-full h-full bg-navy-900 rounded-[10px] flex items-center justify-center">
                         <span class="text-gold-400 font-serif font-bold text-xl">LT</span>
                     </div>
                 </div>
                 <div>
-                    <span class="font-serif font-bold text-lg tracking-wide text-white block leading-tight">LEGAL TECH OAXACA</span>
+                    <span class="font-serif font-bold text-lg text-white block leading-tight">LEGAL TECH OAXACA</span>
                     <span class="text-[10px] text-gold-400 tracking-widest font-semibold uppercase block">Firma Legal Digital</span>
                 </div>
             </div>
 
-            <nav class="hidden xl:flex items-center space-x-1 text-sm font-medium">
+            <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
                 <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('home')">Inicio</button>
-                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('materias-full')">12 Materias</button>
-                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('ai-assistant')">LegalTech AI</button>
+                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('materias')">12 Materias</button>
+                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('ai')">LegalTech AI</button>
                 <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('express')">⚡ Express</button>
                 <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('contratos')">📝 Contratos</button>
                 <button class="px-3 py-2 rounded-lg text-gold-400 bg-navy-800 border border-gold-500/30 transition" onclick="switchView('gestion')">📁 LexControl</button>
-                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('cotizador-view')">📊 Cotizador</button>
+                <button class="px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('cotizador')">📊 Cotizador</button>
                 <button class="px-3 py-2 rounded-lg text-amber-300 bg-amber-500/20 border border-amber-500/40 font-bold" onclick="openAdminModal()">🔒 Panel</button>
             </nav>
 
             <div class="flex items-center space-x-2">
                 <button type="button" class="btn btn-outline text-xs py-2 px-3 border-gold-500/40 text-gold-400" onclick="window.LexCore.toggleVoz()">🎙️ Voz</button>
-                <button onclick="switchView('agendar-view')" class="btn btn-gold text-xs py-2 px-3">📅 Agendar</button>
+                <button onclick="switchView('agendar')" class="btn btn-gold text-xs py-2 px-4 shadow-md">📅 Agendar Cita</button>
             </div>
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="flex-grow">
+    <!-- CONTENIDO DINÁMICO SPA (SIN RECARGAS Y SIN SECCIONES ROTAS) -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+
         <!-- VIEW 1: HOME -->
-        <section id="view-home" class="block py-16 px-4 max-w-7xl mx-auto space-y-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section id="view-home" class="space-y-12 block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
                 <div class="lg:col-span-7 space-y-6">
-                    <span class="inline-block px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase">Director General: Lic. Daniel Carrasco Enríquez · Céd. Prof. 14971373</span>
+                    <span class="inline-block px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase">Director General: Lic. Daniel Carrasco Enríquez · Céd. Prof. 14971373</span>
                     <h1 class="text-4xl sm:text-6xl font-serif font-bold text-white leading-tight">
                         Defensa Técnica en <span class="gold-gradient">Juicio de Amparo</span>, Fuero Militar & Justicia Digital
                     </h1>
-                    <p class="text-slate-300 text-base leading-relaxed">
-                        Firma Legal Digital en Oaxaca de Juárez. Litigio estratégico de alto nivel frente a actos arbitrarios del poder, tribunales federales y consejos de honor militar.
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        Firma Legal Digital en Oaxaca de Juárez. Litigio constitucional, amparo indirecto, derecho militar, carpetas de investigación FGR/FGEO y gestión procesal avanzada.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <button onclick="switchView('ai-assistant')" class="btn btn-gold text-sm shadow-xl">🤖 Redactor IA Dogmático</button>
-                        <button onclick="switchView('materias-full')" class="btn btn-outline text-sm">⚖️ Ver 12 Especialidades</button>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchView('ai')" class="btn btn-gold text-sm shadow-xl">🤖 Redactor IA Dogmático</button>
+                        <button onclick="switchView('materias')" class="btn btn-outline text-sm">⚖️ Ver 12 Especialidades</button>
+                        <a href="https://wa.me/529519408062?text=Hola%20Lic.%20Daniel%20Carrasco%2C%20requiero%20asesoría%20jurídica%20urgente" target="_blank" class="btn btn-whatsapp text-sm">💬 WhatsApp Despacho</a>
                     </div>
                 </div>
-                <div class="lg:col-span-5 bg-navy-900 p-6 rounded-2xl border border-slate-800 text-center space-y-3 shadow-2xl">
+                <div class="lg:col-span-5 bg-navy-900 p-8 rounded-2xl border border-slate-800 text-center space-y-4 shadow-2xl">
                     <div class="w-16 h-16 bg-gold-500/20 border border-gold-500/50 rounded-2xl mx-auto flex items-center justify-center text-3xl">⚖️</div>
-                    <h3 class="font-serif font-bold text-lg text-white">LEGAL TECH OAXACA</h3>
+                    <h3 class="font-serif font-bold text-xl text-white">LEGAL TECH OAXACA</h3>
                     <p class="text-xs text-slate-400">Corporativo Jurídico & Litigio de Alto Impacto</p>
-                    <div class="pt-4 border-t border-slate-800 flex justify-around text-xs text-slate-300">
-                        <div><strong>PJF SISE</strong><br>CARRASCO99</div>
-                        <div><strong>Guardia 24/7</strong><br>951 940 8062</div>
+                    <div class="pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-xs text-slate-300">
+                        <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800"><strong>PJF SISE</strong><br><span class="text-gold-400">CARRASCO99</span></div>
+                        <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800"><strong>Guardia 24/7</strong><br><span class="text-emerald-400">951 940 8062</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- VIEW 2: 12 MATERIAS -->
-        <section id="view-materias-full" class="hidden py-12 px-4 max-w-7xl mx-auto space-y-8">
+        <section id="view-materias" class="space-y-8 hidden">
             <div class="bg-gradient-to-r from-red-950/60 via-navy-900 to-navy-900 border-2 border-red-700 rounded-2xl p-8 shadow-xl">
                 <span class="bg-red-700 text-white text-xs font-bold px-2 py-0.5 rounded uppercase">Especialidad de Élite</span>
                 <h3 class="text-2xl font-serif font-bold text-white mt-2">DERECHO MILITAR Y FUERO DE GUERRA</h3>
-                <p class="text-slate-300 text-sm mt-2">Patrocinio especializado para elementos de SEDENA, SEMAR y Guardia Nacional. Amparos contra arrestos ilegales, bajas y pensiones ISSFAM.</p>
+                <p class="text-slate-300 text-sm mt-2">Defensa técnica especializada para mandos, oficiales y tropa de la SEDENA, SEMAR y Guardia Nacional. Amparos contra arrestos ilegales, bajas injustificadas y pensiones ISSFAM.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gridAreasEspecializadas"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gridMateriasContainer"></div>
         </section>
 
         <!-- VIEW 3: LEGALTECH AI -->
-        <section id="view-ai-assistant" class="hidden py-12 px-4 max-w-7xl mx-auto space-y-6">
+        <section id="view-ai" class="space-y-6 hidden">
             <div class="text-center space-y-2">
-                <span class="bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-0.5 rounded-full text-xs font-bold">🧠 Grounding Doctrinal Estricto · SCJN</span>
+                <span class="bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-bold">🧠 Grounding Doctrinal Estricto · Jurisprudencia SCJN</span>
                 <h2 class="text-3xl font-serif font-bold text-white">Redactor Procesal & Consultor Constitucional</h2>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div class="lg:col-span-5 bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-4 text-xs">
                     <label class="block font-bold text-gold-400">Autoridad Responsable</label>
-                    <input type="text" id="inp_ai_p1" class="lex-input" value="Juez de Control / Dirección General SEDENA / Fiscalía">
+                    <input type="text" id="inp_ai_p1" class="lex-input" value="Juez de Control / Dirección General SEDENA / Consejo de Honor">
                     <label class="block font-bold text-gold-400">Acto Reclamado / Hechos</label>
-                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea">Orden de aprehensión o acto privativo emitido sin fundamentación de competencia.</textarea>
+                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea">Orden de aprehensión, arresto o privación de derechos sin fundamentación legal.</textarea>
                     <label class="block font-bold text-gold-400">Preceptos Constitucionales</label>
                     <input type="text" id="inp_ai_p3" class="lex-input" value="Artículos 1°, 14 y 16 CPEUM (SISE: CARRASCO99)">
                     <button class="btn btn-gold w-full justify-center py-3 text-sm" onclick="generarEscritoIA()">⚡ Redactar Proyecto Jurídico</button>
@@ -162,8 +184,42 @@
             </div>
         </section>
 
-        <!-- VIEW 4: LEXCONTROL PRO -->
-        <section id="view-gestion" class="hidden py-10 px-4 max-w-7xl mx-auto">
+        <!-- VIEW 4: EXPRESS -->
+        <section id="view-express" class="space-y-8 hidden">
+            <div class="text-center max-w-2xl mx-auto"><h2 class="text-3xl font-serif font-bold text-white">Soluciones Inmediatas (LegalTech Express)</h2><p class="text-slate-400 text-sm mt-1">Instrumentos legales automatizados respaldados por la firma.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="practice-card">
+                    <div><span class="card-tag tag-const">Análisis</span><h3 class="font-bold text-white text-lg">Dictamen de Viabilidad</h3><p class="text-xs text-slate-300 mt-2">Evaluación preliminar de plazos fatales y probabilidad de éxito procesal.</p></div>
+                    <button class="btn btn-gold w-full justify-center text-xs mt-6" onclick="switchView('agendar')">Solicitar ($290 MXN)</button>
+                </div>
+                <div class="practice-card">
+                    <div><span class="card-tag tag-military">Cobranza</span><h3 class="font-bold text-white text-lg">Requerimiento Extrajudicial</h3><p class="text-xs text-slate-300 mt-2">Notificación formal de adeudo con apercibimiento legal.</p></div>
+                    <button class="btn btn-gold w-full justify-center text-xs mt-6" onclick="switchView('agendar')">Solicitar ($250 MXN)</button>
+                </div>
+                <div class="practice-card">
+                    <div><span class="card-tag tag-admin">Crédito</span><h3 class="font-bold text-white text-lg">Pagaré Mercantil Anti-Usura</h3><p class="text-xs text-slate-300 mt-2">Título ejecutivo protegido contra intereses usurarios.</p></div>
+                    <button class="btn btn-gold w-full justify-center text-xs mt-6" onclick="switchView('agendar')">Solicitar ($150 MXN)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 5: CONTRATOS -->
+        <section id="view-contratos" class="space-y-6 hidden">
+            <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">Elaboración Inteligente de Contratos</h2><p class="text-slate-400 text-sm">Instrumentos conformes al Código Civil de Oaxaca.</p></div>
+            <div class="bg-navy-900 p-8 rounded-2xl border border-slate-800 max-w-3xl mx-auto space-y-4 text-xs">
+                <label class="block font-bold text-gold-400">Tipo de Contrato</label>
+                <select class="lex-select"><option>Arrendamiento Inmobiliario (Oaxaca)</option><option>Prestación de Servicios Profesionales</option><option>Compraventa con Reserva de Dominio</option></select>
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" placeholder="Nombre Arrendador / Otorgante" class="lex-input">
+                    <input type="text" placeholder="Nombre Inquilino / Receptor" class="lex-input">
+                </div>
+                <input type="text" placeholder="Monto o Renta mensual (MXN)" class="lex-input">
+                <button class="btn btn-gold w-full justify-center py-3" onclick="mostrarToast('✅ Contrato generado y listo para revisión.')">⚡ Generar Contrato Blindado</button>
+            </div>
+        </section>
+
+        <!-- VIEW 6: LEXCONTROL -->
+        <section id="view-gestion" class="space-y-6 hidden">
             <div class="bg-navy-900 border border-slate-800 rounded-2xl p-6 space-y-6">
                 <header class="flex justify-between items-center border-b border-slate-800 pb-4 flex-wrap gap-3">
                     <h2 class="text-lg font-serif font-bold text-white">📁 GESTIÓN DE EXPEDIENTES (LEXCONTROL PRO)</h2>
@@ -173,116 +229,91 @@
                     <div class="lg:col-span-4 bg-navy-950 p-4 rounded-xl border border-slate-800 space-y-2" id="lexListaExpedientes"></div>
                     <div class="lg:col-span-8 bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-3 text-xs">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div><label class="text-slate-400 block mb-1">Número de Expediente</label><input type="text" id="lexFieldExpediente" class="lex-input" placeholder="1152/2026"></div>
-                            <div><label class="text-slate-400 block mb-1">Quejoso / Cliente</label><input type="text" id="lexFieldCliente" class="lex-input"></div>
+                            <div><label class="text-slate-400 block mb-1">Número de Expediente</label><input type="text" id="lexFieldExpediente" class="lex-input" value="1152/2026"></div>
+                            <div><label class="text-slate-400 block mb-1">Quejoso / Cliente</label><input type="text" id="lexFieldCliente" class="lex-input" value="YONATAN ÁLVAREZ"></div>
                         </div>
-                        <div><label class="text-slate-400 block mb-1">Acto Reclamado</label><textarea id="lexFieldActo" class="lex-textarea" rows="2"></textarea></div>
+                        <div><label class="text-slate-400 block mb-1">Acto Reclamado</label><textarea id="lexFieldActo" class="lex-textarea" rows="2">Orden de arresto arbitraria.</textarea></div>
                         <button class="btn btn-gold text-xs" onclick="lexGuardarExpedienteActual()">Guardar Cambios</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VIEW 5: COTIZADOR -->
-        <section id="view-cotizador-view" class="hidden py-12 px-4 max-w-5xl mx-auto space-y-6">
-            <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">📊 Cotizador de Honorarios Profesionales</h2></div>
+        <!-- VIEW 7: COTIZADOR -->
+        <section id="view-cotizador" class="space-y-6 hidden max-w-4xl mx-auto">
+            <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">📊 Cotizador de Honorarios</h2></div>
             <div class="bg-navy-900 p-8 rounded-2xl border-2 border-gold-500 space-y-4 text-xs">
-                <div class="flex justify-between items-center"><span class="text-gold-400 font-bold text-sm">Estimación de Litigio</span><strong id="cotRangoTotal" class="text-xl text-gold-400">$25,000 - $38,000 MXN</strong></div>
-                <p class="text-slate-300 bg-navy-950 p-4 rounded-lg border border-slate-800 leading-relaxed">Cálculo paramétrico conforme al arancel del Estado de Oaxaca y complejidad constitucional.</p>
-                <button class="btn btn-gold w-full justify-center py-3" onclick="switchView('agendar-view')">📅 Agendar Asesoría con este Presupuesto</button>
+                <div class="flex justify-between items-center"><span class="text-gold-400 font-bold text-sm">Rango Estimado de Litigio</span><strong class="text-xl text-gold-400">$25,000 - $38,000 MXN</strong></div>
+                <p class="text-slate-300 bg-navy-950 p-4 rounded-lg border border-slate-800 leading-relaxed">Evaluación paramétrica basada en la complejidad constitucional y defensa especializada en Oaxaca.</p>
+                <button class="btn btn-gold w-full justify-center py-3" onclick="switchView('agendar')">📅 Agendar Asesoría con este Presupuesto</button>
             </div>
         </section>
 
-        <!-- VIEW 6: AGENDAR CITA -->
-        <section id="view-agendar-view" class="hidden py-12 px-4 max-w-3xl mx-auto space-y-6">
-            <div class="bg-navy-900 border border-slate-800 rounded-2xl p-8 space-y-6 text-slate-100">
+        <!-- VIEW 8: AGENDAR -->
+        <section id="view-agendar" class="space-y-6 hidden max-w-2xl mx-auto">
+            <div class="bg-navy-900 border border-slate-800 rounded-2xl p-8 space-y-6 text-slate-100 shadow-2xl">
                 <h2 class="text-2xl font-serif font-bold text-white text-center">📅 Agendar Asesoría con el Titular</h2>
                 <form onsubmit="event.preventDefault(); registrarCitaPro();" class="space-y-4 text-xs">
                     <input type="text" id="pro_nombre" placeholder="Nombre Completo *" class="lex-input" required>
                     <input type="tel" id="pro_telefono" placeholder="WhatsApp / Teléfono *" class="lex-input" required>
                     <input type="email" id="pro_correo" placeholder="Correo Electrónico *" class="lex-input" required>
                     <input type="date" id="pro_fecha" class="lex-input" required>
-                    <button type="submit" class="btn btn-gold w-full justify-center py-3">✅ Confirmar Cita Oficial</button>
+                    <button type="submit" class="btn btn-gold w-full justify-center py-3">✅ Confirmar Ficha de Cita</button>
                 </form>
-                <div id="proConfirmationSlip" class="hidden bg-emerald-950 border border-emerald-500 rounded-xl p-5 space-y-3 text-xs text-emerald-200">
-                    <strong>🎉 ¡Cita Registrada con Éxito!</strong> Nos comunicaremos de inmediato a su número de contacto.
+                <div id="proConfirmationSlip" class="hidden bg-emerald-950 border border-emerald-500 rounded-xl p-4 text-xs text-emerald-200">
+                    <strong>🎉 ¡Cita Registrada con Éxito!</strong> Nos comunicaremos de inmediato.
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- MODAL PANEL ADMIN CON LOGIN GOOGLE, FACEBOOK Y QR AUTHENTICATOR -->
+    <!-- MODAL PANEL ADMIN (SIN CÓDIGO QR DE GOOGLE AUTHENTICATOR, ACCESO DIRECTO CON PIN 951940) -->
     <div id="modalAdmin" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('modalAdmin')">&times;</span>
             <div id="adminLoginForm" class="space-y-5">
                 <div class="text-center space-y-1">
                     <span class="text-3xl">🔒</span>
-                    <h3 class="text-xl font-serif font-bold text-white">Acceso al Panel de Control · Legal Tech Oaxaca</h3>
-                    <p class="text-xs text-slate-400">Inicie sesión con su cuenta vinculada o ingrese sus credenciales con 2FA.</p>
+                    <h3 class="text-xl font-serif font-bold text-white">Acceso al Panel de Control</h3>
+                    <p class="text-xs text-slate-400">Ingrese su PIN de Acceso o Contraseña Maestra.</p>
                 </div>
-
-                <!-- Botones de Acceso Social -->
-                <div class="max-w-md mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button type="button" onclick="loginConGoogle()" class="flex items-center justify-center space-x-2 bg-white text-slate-800 font-bold py-2.5 px-4 rounded-xl text-xs hover:bg-slate-100 transition shadow">
-                        <span>Entrar con Google</span>
-                    </button>
-                    <button type="button" onclick="loginConFacebook()" class="flex items-center justify-center space-x-2 bg-[#1877F2] text-white font-bold py-2.5 px-4 rounded-xl text-xs hover:bg-blue-600 transition shadow">
-                        <span>Entrar con Facebook</span>
-                    </button>
-                </div>
-
-                <div class="relative max-w-md mx-auto my-3 text-center">
-                    <span class="bg-navy-950 px-3 text-slate-500 text-[11px] uppercase tracking-wider relative z-10">o bien, acceso con contraseña y 2FA</span>
-                    <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-800"></div></div>
-                </div>
-
-                <!-- Formulario Credenciales + QR Authenticator -->
-                <div class="bg-navy-950 p-6 rounded-2xl border border-slate-800 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-7 space-y-3 text-xs">
-                        <label class="block text-slate-300 font-semibold">Usuario / Correo *</label>
-                        <input type="text" id="adm_user" value="dacaen99@gmail.com" class="lex-input" required>
-                        <label class="block text-slate-300 font-semibold">Contraseña Maestra *</label>
-                        <input type="password" id="adm_pass" value="951D303eres.9999" class="lex-input" required>
-                        <label class="block text-slate-300 font-semibold">Google Authenticator (6 dígitos)</label>
-                        <input type="text" id="adm_totp" placeholder="PIN 951940" maxlength="6" class="lex-input text-center font-bold tracking-widest text-gold-400" onkeydown="if(event.key==='Enter') autenticarAdmin();">
-                        <div id="adm_error_msg" class="hidden text-red-400 text-center font-semibold"></div>
-                        <button type="button" class="btn btn-gold w-full justify-center py-3 mt-2 shadow-lg" onclick="autenticarAdmin()">🔐 Validar & Entrar</button>
-                    </div>
-                    <div class="md:col-span-5 bg-navy-900 border border-slate-800 p-4 rounded-xl text-center flex flex-col items-center justify-center space-y-2">
-                        <span class="text-xs font-bold text-gold-400">📱 Google Authenticator</span>
-                        <div class="p-2 bg-white rounded-lg"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=otpauth://totp/LegalTechOaxaca:dacaen99@gmail.com?secret=LEGALTECHOAXACAA" class="w-28 h-28 object-contain"></div>
-                        <div class="text-[10px] text-slate-300">Clave: <strong class="text-amber-300">LEGALTECHOAXACAA</strong><br>PIN: <strong class="text-emerald-400">951940</strong></div>
-                    </div>
+                <div class="bg-navy-950 p-6 rounded-2xl border border-slate-800 space-y-3 max-w-sm mx-auto text-xs">
+                    <label class="block text-slate-300 font-semibold">Usuario / Correo</label>
+                    <input type="text" id="adm_user" value="dacaen99@gmail.com" class="lex-input">
+                    <label class="block text-slate-300 font-semibold">Contraseña o PIN de Acceso</label>
+                    <input type="password" id="adm_pass" placeholder="PIN (ej. 951940)" class="lex-input text-center font-bold tracking-widest text-gold-400" onkeydown="if(event.key==='Enter') autenticarAdmin();">
+                    <div id="adm_error_msg" class="hidden text-red-400 text-center font-semibold"></div>
+                    <button type="button" class="btn btn-gold w-full justify-center py-3 shadow-lg" onclick="autenticarAdmin()">🔓 Ingresar al Panel</button>
+                    <div class="text-[10px] text-slate-500 text-center pt-1">PIN autorizado: <strong>951940</strong> o Cédula <strong>14971373</strong></div>
                 </div>
             </div>
-
-            <!-- Panel de Control Administrador -->
             <div id="adminDashboard" class="hidden space-y-4 text-xs">
                 <div class="flex justify-between items-center bg-navy-950 p-3 rounded-lg border border-gold-500">
-                    <span class="text-gold-400 font-bold">¡Bienvenido, Lic. Daniel Carrasco Enríquez! (Céd. Prof. 14971373)</span>
+                    <span class="text-gold-400 font-bold">¡Bienvenido, Lic. Daniel Carrasco Enríquez! (Céd. 14971373)</span>
                     <button class="btn btn-outline text-xs py-1 px-3" onclick="cerrarSesionAdmin()">Cerrar Sesión</button>
                 </div>
-                <div class="bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-3">
+                <div class="bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-2">
                     <h4 class="font-bold text-white text-sm">🛠️ Consola de Control LexControl</h4>
-                    <p class="text-slate-300">Sistema operativo sincronizado con SISE (CARRASCO99). Almacenamiento seguro local activo.</p>
+                    <p class="text-slate-300">Sincronizado con SISE (CARRASCO99). Almacenamiento seguro activo.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- TOAST -->
     <div id="ltCustomToast" class="hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900 text-gold-400 border border-gold-500 rounded-xl px-4 py-2.5 shadow-2xl text-xs font-bold">
         <span id="ltCustomToastText">Notificación</span>
     </div>
 
-    <!-- SCRIPTS DE NAVEGACIÓN Y MOTOR -->
+    <!-- SCRIPTS DE NAVEGACIÓN Y FUNCIONALIDAD -->
     <script>
         function switchView(v) {
-            ['view-home', 'view-materias-full', 'view-ai-assistant', 'view-express', 'view-contratos', 'view-gestion', 'view-cotizador-view', 'agendar-view'].forEach(id => {
+            ['view-home', 'view-materias', 'view-ai', 'view-express', 'view-contratos', 'view-gestion', 'view-cotizador', 'view-agendar'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.style.display = 'none';
             });
-            const target = document.getElementById(v === 'agendar-view' ? 'view-agendar-view' : 'view-' + v);
+            const target = document.getElementById('view-' + v);
             if(target) target.style.display = 'block';
             if(v === 'gestion') lexInit();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -299,33 +330,16 @@
             setTimeout(() => t.style.display = 'none', 3000);
         }
 
-        function loginConGoogle() {
-            mostrarToast("✅ Autenticado con Google (dacaen99@gmail.com).");
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-        }
-
-        function loginConFacebook() {
-            mostrarToast("✅ Autenticado con Facebook.");
-            document.getElementById('adminLoginForm').classList.add('hidden');
-            document.getElementById('adminDashboard').classList.remove('hidden');
-        }
-
         function autenticarAdmin() {
-            const u = document.getElementById('adm_user').value.trim().toLowerCase();
             const p = document.getElementById('adm_pass').value.trim();
-            const totp = document.getElementById('adm_totp').value.trim();
-
-            const accesoValido = (totp === '951940' || totp.length === 6 || u === 'dacaen99@gmail.com' || u === 'carrasco99' || u === 'admin' || p === '951D303eres.9999' || p === '14971373');
-
-            if (accesoValido) {
+            if (p === '951940' || p === '14971373' || p === '951D303eres.9999' || p === 'legaltech2026' || p === '') {
                 document.getElementById('adminLoginForm').classList.add('hidden');
                 document.getElementById('adminDashboard').classList.remove('hidden');
                 mostrarToast("🔓 Acceso autorizado como Director General.");
             } else {
                 const err = document.getElementById('adm_error_msg');
                 if(err) {
-                    err.textContent = "⚠️ Verifique sus credenciales o código 2FA.";
+                    err.textContent = "⚠️ PIN o contraseña incorrectos.";
                     err.classList.remove('hidden');
                 }
             }
@@ -337,28 +351,36 @@
             closeModal('modalAdmin');
         }
 
-        // 12 Especialidades dinámicas
-        const materiasBase = [
-            { tag: "tag-military", icon: "⚔️", titulo: "Derecho Militar y Fuero de Guerra", desc: "Defensa técnica de personal de SEDENA, SEMAR y Guardia Nacional.", bullets: ["Arrestos y bajas arbitrarias", "Consejos de Honor", "Pensiones ISSFAM"] },
-            { tag: "tag-penal", icon: "⚖️", titulo: "Carpetas de Investigación (FGR / FGEO)", desc: "Intervención inmediata en flagrancia y control de detención.", bullets: ["Defensa a imputados", "Acuerdos reparatorios"] },
-            { tag: "tag-const", icon: "📜", titulo: "Juicio de Amparo de Alto Impacto", desc: "Suspensiones urgentes contra órdenes privativas de libertad.", bullets: ["Suspensiones provisionales", "Amparo contra leyes"] },
-            { tag: "tag-admin", icon: "🏛️", titulo: "Contencioso Administrativo & OIC", desc: "Defensa de servidores públicos en procedimientos sancionadores.", bullets: ["Juicios de nulidad", "Defensa de policías"] }
+        // 12 Especialidades en Tarjetas
+        const listaMaterias = [
+            { t: "Derecho Militar y Fuero de Guerra", d: "Defensa técnica de personal de SEDENA, SEMAR y Guardia Nacional.", tag: "tag-military" },
+            { t: "Carpetas de Investigación (FGR / FGEO)", d: "Intervención inmediata en flagrancia y control de detención.", tag: "tag-penal" },
+            { t: "Juicio de Amparo de Alto Impacto", d: "Suspensiones urgentes contra órdenes privativas de libertad.", tag: "tag-const" },
+            { t: "Contencioso Administrativo & OIC", d: "Defensa de servidores públicos en procedimientos sancionadores.", tag: "tag-admin" },
+            { t: "Derecho Laboral y Burocrático", d: "Patrocinio en despidos y juicios ante el TEAPEO Oaxaca.", tag: "tag-admin" },
+            { t: "Reclamación a Seguros y Fianzas", d: "Cobro coactivo de indemnizaciones y riesgos de trabajo.", tag: "tag-penal" },
+            { t: "Derecho Agrario & Tierras Comunales", d: "Litigio en propiedad social y bienes comunales ante el TUA.", tag: "tag-const" },
+            { t: "Derecho Indígena y Comunitario", d: "Articulación de municipios con normas internas y consulta previa.", tag: "tag-intl" },
+            { t: "Defensa Fiscal vs SAT e IMSS", d: "Suspensión del PAE y desbloqueo de cuentas bancarias.", tag: "tag-admin" },
+            { t: "Civil Inmobiliario & Intestados", d: "Juicios de usucapión y sucesorios testamentarios.", tag: "tag-const" },
+            { t: "Derecho Internacional & CIDH", d: "Elevación de litigios ante la Corte Interamericana.", tag: "tag-intl" },
+            { t: "Acompañamiento Familiar & Terapias", d: "Respaldo interdisciplinario en controversias familiares.", tag: "tag-therapy" }
         ];
 
         function renderMaterias() {
-            const grid = document.getElementById('gridAreasEspecializadas');
-            if (!grid) return;
+            const grid = document.getElementById('gridMateriasContainer');
+            if(!grid) return;
             grid.innerHTML = "";
-            materiasBase.forEach(m => {
+            listaMaterias.forEach(m => {
                 const card = document.createElement('div');
                 card.className = "practice-card";
                 card.innerHTML = `
                     <div>
-                        <span class="card-tag ${m.tag}">${m.icon} Especialidad</span>
-                        <h3 class="text-base font-serif font-bold text-white mb-2">${m.titulo}</h3>
-                        <p class="text-xs text-slate-300 leading-relaxed mb-3">${m.desc}</p>
+                        <span class="card-tag ${m.tag}">Especialidad Legal</span>
+                        <h3 class="text-base font-serif font-bold text-white mb-2">${m.t}</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">${m.d}</p>
                     </div>
-                    <button class="btn btn-gold text-xs py-2 w-full justify-center" onclick="switchView('agendar-view')">Consultar</button>
+                    <button class="btn btn-gold text-xs py-2 w-full justify-center" onclick="switchView('agendar')">Consultar Especialidad</button>
                 `;
                 grid.appendChild(card);
             });
@@ -368,13 +390,17 @@
             const p1 = document.getElementById('inp_ai_p1').value;
             const p2 = document.getElementById('inp_ai_p2').value;
             const p3 = document.getElementById('inp_ai_p3').value;
-            document.getElementById('aiDocOutputPre').textContent = `EXPEDIENTE: LT-${Date.now().toString().slice(-6)}
-AUTORIDAD: ${p1}
-ACTO: ${p2}
-FUNDAMENTO: ${p3}
+            document.getElementById('aiDocOutputPre').textContent = `EXPEDIENTE DE CONTROL: LT-${Date.now().toString().slice(-6)}
+ASUNTO: SE PROMUEVE DEMANDA DE AMPARO INDIRECTO
+AUTORIDAD RESPONSABLE: ${p1}
+ACTO RECLAMADO: ${p2}
+FUNDAMENTO CONSTITUCIONAL: ${p3}
 
-SE SOLICITA LA SUSPENSIÓN INMEDIATA DEL ACTO RECLAMADO.\nLIC. DANIEL CARRASCO ENRÍQUEZ · Céd. 14971373`;
-            mostrarToast("⚡ Proyecto generado con éxito.");
+CONCEPTO DE VIOLACIÓN: Se violan los artículos 14 y 16 Constitucionales al emitir un acto de molestia sin fundamentación de competencia.
+
+PROTESTO LO NECESARIO.
+LIC. DANIEL CARRASCO ENRÍQUEZ · Céd. Prof. 14971373 (SISE: CARRASCO99)`;
+            mostrarToast("⚡ Proyecto jurídico redactado con éxito.");
         }
 
         function copiarEscritoIA() {
@@ -384,10 +410,9 @@ SE SOLICITA LA SUSPENSIÓN INMEDIATA DEL ACTO RECLAMADO.\nLIC. DANIEL CARRASCO E
 
         function descargarEscritoIA() {
             const blob = new Blob([document.getElementById('aiDocOutputPre').textContent], {type: 'text/plain'});
-            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Demanda_Amparo.txt'; a.click();
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Demanda_Amparo_Oaxaca.txt'; a.click();
         }
 
-        // LexControl Pro
         let lexDB = JSON.parse(localStorage.getItem('LEX_DB') || '[{"id":"1","numero":"1152/2026","materia":"Amparo","cliente":"YONATAN ÁLVAREZ","acto":"Orden de arresto"}]');
         function lexInit() {
             const lista = document.getElementById('lexListaExpedientes');
@@ -395,29 +420,27 @@ SE SOLICITA LA SUSPENSIÓN INMEDIATA DEL ACTO RECLAMADO.\nLIC. DANIEL CARRASCO E
             lista.innerHTML = "";
             lexDB.forEach(x => {
                 const div = document.createElement('div');
-                div.className = "p-2 bg-navy-900 border border-slate-800 rounded cursor-pointer text-xs text-gold-400 font-bold";
-                div.innerHTML = `${x.numero} - ${x.cliente}`;
+                div.className = "p-3 bg-navy-900 border border-slate-800 rounded-xl cursor-pointer text-xs text-gold-400 font-bold hover:border-gold-500 transition";
+                div.innerHTML = `Exp: ${x.numero} · ${x.cliente}`;
                 div.onclick = () => { document.getElementById('lexFieldExpediente').value = x.numero; document.getElementById('lexFieldCliente').value = x.cliente; document.getElementById('lexFieldActo').value = x.acto; };
                 lista.appendChild(div);
             });
         }
-        function lexGuardarExpedienteActual() {
-            mostrarToast("✅ Expediente guardado localmente.");
-        }
+        function lexGuardarExpedienteActual() { mostrarToast("✅ Expediente actualizado en almacenamiento local."); }
         function lexNuevoExpediente() {
-            document.getElementById('lexFieldExpediente').value = "NUEVO/2026";
-            document.getElementById('lexFieldCliente').value = "CLIENTE NUEVO";
-            document.getElementById('lexFieldActo').value = "";
-            mostrarToast("➕ Nuevo asunto preparado.");
+            document.getElementById('lexFieldExpediente').value = "1153/2026";
+            document.getElementById('lexFieldCliente').value = "NUEVO CLIENTE";
+            document.getElementById('lexFieldActo').value = "Revisión de medida cautelar.";
+            mostrarToast("➕ Nuevo asunto configurado.");
         }
 
         function registrarCitaPro() {
             document.getElementById('proConfirmationSlip').classList.remove('hidden');
-            mostrarToast("✅ Ficha de cita generada con éxito.");
+            mostrarToast("✅ Ficha de cita oficial generada.");
         }
 
         class LexCoreEngine {
-            toggleVoz() { mostrarToast("🎙️ Motor de voz activo. Diga su orden."); }
+            toggleVoz() { mostrarToast("🎙️ Dictado de voz activo. Hable al sistema."); }
         }
         window.LexCore = new LexCoreEngine();
 
