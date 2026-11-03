@@ -10,6 +10,7 @@
     <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Juicio de amparo indirecto, derecho militar, consejos de honor, carpetas FGR/FGEO y gestión procesal. Lic. Daniel Carrasco Enríquez. Céd. Prof. 14971373.">
     <meta name="keywords" content="abogado oaxaca, amparo indirecto oaxaca, derecho militar oaxaca, legal tech oaxaca, daniel carrasco enriquez, corporativo juridico oaxaca">
     <meta name="author" content="Lic. Daniel Carrasco Enríquez">
+    <meta name="legal-chat-endpoint" content="/api/chat">
     <link rel="canonical" href="http://www.legaltechoaxacacorporativojuridico.com">
 
     <!-- Tailwind CSS 3.4.17 & Fuentes de Lujo -->
@@ -433,7 +434,7 @@ LIC. DANIEL CARRASCO ENRÍQUEZ · Céd. Prof. 14971373 (SISE: CARRASCO99)`;
         }
 
         const chatLegalMessages = [];
-        const chatLegalEndpoint = '/api/chat';
+        const chatLegalEndpoint = document.querySelector('meta[name="legal-chat-endpoint"]')?.content || '/api/chat';
         let chatLegalPending = false;
 
         function agregarMensajeChat(role, content) {
