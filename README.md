@@ -4,13 +4,15 @@ Static site for Legal Tech Oaxaca, published with GitHub Pages and associated wi
 
 ## Legal AI chat
 
-The site includes the chat interface and sends requests to a same-origin `POST /api/chat` endpoint. The static GitHub Pages site does not provide that endpoint; the chat will show an availability error until a backend is deployed and routed at that path.
+The site includes a legal-information chat interface. Its backend is a Cloudflare Worker in `functions/chat-worker`; GitHub Pages itself cannot execute server code. The frontend defaults to the same-origin `POST /api/chat`. For a `workers.dev` deployment, set the `legal-chat-endpoint` meta tag in `index.html` to the Worker URL followed by `/api/chat`. For same-origin use, configure the Worker route shown in `functions/chat-worker/wrangler.toml` and ensure the domain's DNS is proxied through Cloudflare.
 
-The backend contract is:
+### Deploy the chat backend
 
-- Request JSON: `{ "messages": [{ "role": "user" | "assistant", "content": "..." }] }` (up to 20 recent messages).
-- Response JSON: `{ "reply": "..." }`.
-- Keep model credentials on the server, validate message roles and lengths, apply rate limits, and return JSON errors without exposing provider credentials or internal diagnostics.
-- Select and configure the AI provider, legal reference sources, retention policy, and privacy notice before enabling the endpoint. Do not send sensitive client or case information to an AI provider without an approved privacy and data-handling process.
+1. Sign in to an account that manages the domain in Cloudflare, install Node.js/npm, then run `cd functions/chat-worker` and `npx wrangler login`.
+2. Add the required server-side settings with `npx wrangler secret put AI_API_KEY`, `AI_BASE_URL` (HTTPS chat-completions endpoint for an OpenAI-compatible provider), `AI_MODEL`, and `ALLOWED_ORIGINS` (exact website origin, e.g. `http://www.legaltechoaxacacorporativojuridico.com`; add the HTTPS origin too if used).
+3. Run `npx wrangler deploy`. This deploys a `workers.dev` URL. For same-origin `/api/chat`, enable the example route in `wrangler.toml`, use Cloudflare DNS/proxy for the site, and deploy again. Otherwise, set `legal-chat-endpoint` to the deployed Worker URL plus `/api/chat` and publish the site.
+4. Check the Worker `/health` endpoint; `configured: true` means the backend secrets exist. Send a test question through the website and confirm an answer before treating the integration as live.
 
-No AI provider or server credentials are configured in this repository. Do not add provider secrets to the static site.
+The Worker accepts only JSON containing up to 20 `user`/`assistant` messages (4,000 characters per message), limits each IP to 10 requests/minute, applies a 25-second provider timeout, and returns generic errors without exposing upstream details. The provider must implement the OpenAI-compatible chat-completions request/response format. Choose a provider and verify its legal-data handling before adding its key. Never send confidential case details until privacy, provider retention, and consent policies are approved. The chat is informational, not legal advice; model responses can be inaccurate.
+
+No Cloudflare account credentials, AI-provider key, model, or provider endpoint were present in this repository. These must be configured as Worker secrets by an account owner; do not put them in the static site or commit them.

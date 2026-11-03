@@ -1,0 +1,18 @@
+name = "legaltech-oaxaca-chat"
+main = "src/index.js"
+compatibility_date = "2026-11-03"
+workers_dev = true
+preview_urls = false
+
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter"]
+
+# To serve /api/chat on the site domain, put DNS for the domain on Cloudflare
+# and enable the route below. Otherwise use the workers.dev URL as the chat
+# endpoint and configure ALLOWED_ORIGINS for the website's exact origin.
+# routes = [{ pattern = "www.legaltechoaxacacorporativojuridico.com/api/*", zone_name = "legaltechoaxacacorporativojuridico.com" }]
