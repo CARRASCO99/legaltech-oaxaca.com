@@ -10,7 +10,7 @@
     <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Juicio de amparo indirecto, derecho militar, consejos de honor, carpetas FGR/FGEO y gestión procesal. Lic. Daniel Carrasco Enríquez. Céd. Prof. 14971373.">
     <meta name="keywords" content="abogado oaxaca, amparo indirecto oaxaca, derecho militar oaxaca, legal tech oaxaca, daniel carrasco enriquez, corporativo juridico oaxaca">
     <meta name="author" content="Lic. Daniel Carrasco Enríquez">
-    <link rel="canonical" href="https://www.legaltechoaxacacorporativojuridico.com/">
+    <link rel="canonical" href="http://www.legaltechoaxacacorporativojuridico.com">
 
     <!-- Tailwind CSS 3.4.17 & Fuentes de Lujo -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -158,7 +158,7 @@
         <!-- VIEW 3: LEGALTECH AI -->
         <section id="view-ai" class="space-y-6 hidden">
             <div class="text-center space-y-2">
-                <span class="bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-bold">🧠 Grounding Doctrinal Estricto · Jurisprudencia SCJN</span>
+                <span class="bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-bold">🧠 Orientacion informativa - Verifica las fuentes y plazos con un profesional</span>
                 <h2 class="text-3xl font-serif font-bold text-white">Redactor Procesal & Consultor Constitucional</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -182,6 +182,25 @@
                     <pre id="aiDocOutputPre" contenteditable="true" class="w-full bg-navy-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-200 leading-relaxed max-h-[500px] overflow-y-auto"></pre>
                 </div>
             </div>
+            <section class="bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-4 max-w-4xl mx-auto w-full" aria-labelledby="chatTitle">
+                <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 id="chatTitle" class="text-xl font-serif font-bold text-white">Chat de orientaci&#243;n legal</h3>
+                        <p id="chatStatus" class="text-xs text-amber-300 mt-1" role="status">Servidor de IA no configurado.</p>
+                    </div>
+                    <button type="button" class="btn btn-outline text-xs py-1 px-3" onclick="limpiarChatLegal()">Limpiar chat</button>
+                </div>
+                <div id="chatMessages" class="bg-navy-950 border border-slate-800 rounded-xl p-4 space-y-3 min-h-40 max-h-96 overflow-y-auto" role="log" aria-live="polite" aria-relevant="additions text">
+                    <p class="text-sm text-slate-300">Hola. Puedo ayudarte a identificar informaci&#243;n general sobre un tema legal. No compartas nombres, domicilios, n&#250;meros de expediente ni documentos confidenciales. La respuesta no sustituye la asesor&#237;a de un abogado.</p>
+                </div>
+                <p id="chatError" class="text-sm text-red-300" role="alert"></p>
+                <form id="legalChatForm" class="flex flex-col sm:flex-row gap-3" onsubmit="enviarMensajeChat(event)">
+                    <label class="sr-only" for="chatInput">Escribe tu pregunta legal</label>
+                    <textarea id="chatInput" class="lex-textarea flex-1" rows="2" maxlength="4000" placeholder="Escribe una pregunta general (m&#225;ximo 4,000 caracteres)" required></textarea>
+                    <button id="chatSendButton" type="submit" class="btn btn-gold justify-center">Enviar</button>
+                </form>
+                <p class="text-xs text-slate-400">No uses este chat para emergencias ni para enviar informaci&#243;n personal o confidencial.</p>
+            </section>
         </section>
 
         <!-- VIEW 4: EXPRESS -->
@@ -411,6 +430,80 @@ LIC. DANIEL CARRASCO ENRÍQUEZ · Céd. Prof. 14971373 (SISE: CARRASCO99)`;
         function descargarEscritoIA() {
             const blob = new Blob([document.getElementById('aiDocOutputPre').textContent], {type: 'text/plain'});
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Demanda_Amparo_Oaxaca.txt'; a.click();
+        }
+
+        const chatLegalMessages = [];
+        const chatLegalEndpoint = '/api/chat';
+        let chatLegalPending = false;
+
+        function agregarMensajeChat(role, content) {
+            const message = document.createElement('p');
+            message.className = role === 'user'
+                ? 'text-sm text-white bg-navy-800 rounded-lg p-3 ml-6'
+                : 'text-sm text-slate-200 bg-navy-900 border border-slate-800 rounded-lg p-3 mr-6';
+            message.textContent = content;
+            document.getElementById('chatMessages').appendChild(message);
+            message.scrollIntoView({ block: 'nearest' });
+        }
+
+        function limpiarChatLegal() {
+            chatLegalMessages.length = 0;
+            document.getElementById('chatMessages').replaceChildren();
+            agregarMensajeChat('assistant', 'Hola. Puedo ayudarte a identificar informacion general sobre un tema legal. No compartas nombres, domicilios, numeros de expediente ni documentos confidenciales. La respuesta no sustituye la asesoria de un abogado.');
+            document.getElementById('chatError').textContent = '';
+        }
+
+        async function enviarMensajeChat(event) {
+            event.preventDefault();
+            if (chatLegalPending) return;
+
+            const input = document.getElementById('chatInput');
+            const content = input.value.trim();
+            if (!content) return;
+
+            const status = document.getElementById('chatStatus');
+            const error = document.getElementById('chatError');
+            const sendButton = document.getElementById('chatSendButton');
+            chatLegalPending = true;
+            sendButton.disabled = true;
+            sendButton.textContent = 'Enviando...';
+            status.textContent = 'Conectando con el servidor...';
+            error.textContent = '';
+            input.value = '';
+            chatLegalMessages.push({ role: 'user', content });
+            if (chatLegalMessages.length > 20) chatLegalMessages.splice(0, chatLegalMessages.length - 20);
+            agregarMensajeChat('user', content);
+
+            const requestController = new AbortController();
+            const requestTimeout = setTimeout(() => requestController.abort(), 30000);
+            try {
+                const response = await fetch(chatLegalEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: chatLegalMessages.slice(-20) }),
+                    signal: requestController.signal
+                });
+                if (!response.ok) throw new Error('chat_service_unavailable');
+
+                const data = await response.json();
+                if (!data || typeof data.reply !== 'string' || !data.reply.trim()) {
+                    throw new Error('invalid_chat_response');
+                }
+
+                chatLegalMessages.push({ role: 'assistant', content: data.reply.trim() });
+                if (chatLegalMessages.length > 20) chatLegalMessages.splice(0, chatLegalMessages.length - 20);
+                agregarMensajeChat('assistant', data.reply.trim());
+                status.textContent = 'Respuesta recibida.';
+            } catch {
+                status.textContent = 'Servicio de IA no disponible.';
+                error.textContent = 'No se pudo obtener respuesta. El servidor de IA puede no estar configurado o disponible; intenta mas tarde o contactanos por WhatsApp.';
+            } finally {
+                clearTimeout(requestTimeout);
+                chatLegalPending = false;
+                sendButton.disabled = false;
+                sendButton.textContent = 'Enviar';
+                input.focus();
+            }
         }
 
         let lexDB = JSON.parse(localStorage.getItem('LEX_DB') || '[{"id":"1","numero":"1152/2026","materia":"Amparo","cliente":"YONATAN ÁLVAREZ","acto":"Orden de arresto"}]');
