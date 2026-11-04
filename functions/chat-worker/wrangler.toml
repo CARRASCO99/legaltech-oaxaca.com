@@ -9,7 +9,7 @@ binding = "AI"
 remote = true
 
 [vars]
-AI_MODEL = "@cf/meta/llama-3.1-8b-instruct"
+AI_MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8"
 ALLOWED_ORIGINS = "https://www.legaltechoaxacacorporativojuridico.com"
 
 [[durable_objects.bindings]]
