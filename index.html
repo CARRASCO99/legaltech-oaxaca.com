@@ -252,6 +252,39 @@
                 </form>
                 <p class="text-xs text-slate-400">No uses este chat para emergencias ni para enviar informaci&#243;n personal o confidencial.</p>
             </section>
+            <section class="bg-navy-900 p-6 rounded-2xl border border-gold-500/30 space-y-4 max-w-4xl mx-auto w-full" aria-labelledby="siteAssistantTitle">
+                <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-3">
+                    <div>
+                        <h3 id="siteAssistantTitle" class="text-xl font-serif font-bold text-white">Asistente de ideas y mejoras</h3>
+                        <p id="siteAssistantStatus" class="text-xs text-amber-300 mt-1" role="status">Describe una mejora para recibir una propuesta revisable.</p>
+                    </div>
+                    <button id="siteAssistantClearButton" type="button" class="btn btn-outline text-xs py-1 px-3" onclick="limpiarAsistenteSitio()">Limpiar asistente</button>
+                </div>
+                <div class="rounded-xl border border-slate-700 bg-navy-950 p-4 text-sm text-slate-300 space-y-2">
+                    <p>Puede redactar contenido y sugerir correcciones o cambios de interfaz. Verás una propuesta antes de aprobarla.</p>
+                    <p class="text-amber-200">La aprobación solo crea un borrador de vista previa en esta sesión: no cambia archivos, ventanas ni el sitio publicado. Los cambios de código requieren un entorno de desarrollo y una publicación autorizada.</p>
+                    <p class="text-xs text-slate-400">No incluyas datos personales, expedientes ni documentos confidenciales. Revisa toda afirmacion legal con un profesional.</p>
+                </div>
+                <div id="siteAssistantMessages" class="bg-navy-950 border border-slate-800 rounded-xl p-4 space-y-3 min-h-32 max-h-80 overflow-y-auto" role="log" aria-live="polite" aria-relevant="additions text">
+                    <p class="text-sm text-slate-300">Hola. Cuéntame qué texto, sección o experiencia te gustaría mejorar. Si la idea requiere programar o publicar, puedo preparar una especificación, pero no ejecutar esos cambios.</p>
+                </div>
+                <p id="siteAssistantError" class="text-sm text-red-300" role="alert"></p>
+                <form id="siteAssistantForm" class="flex flex-col sm:flex-row gap-3" onsubmit="enviarIdeaAsistenteSitio(event)">
+                    <label class="sr-only" for="siteAssistantInput">Describe una idea de mejora para el sitio</label>
+                    <textarea id="siteAssistantInput" class="lex-textarea flex-1" rows="2" maxlength="4000" placeholder="Ejemplo: propón una sección de preguntas frecuentes clara y accesible" required></textarea>
+                    <button id="siteAssistantSendButton" type="submit" class="btn btn-gold justify-center">Proponer</button>
+                </form>
+                <section id="siteProposalReview" class="hidden space-y-3 rounded-xl border border-gold-500/40 bg-navy-950 p-4" aria-labelledby="siteProposalTitle">
+                    <h4 id="siteProposalTitle" class="font-bold text-gold-300">Propuesta para revisar</h4>
+                    <pre id="siteProposalPreview" class="whitespace-pre-wrap break-words text-sm text-slate-200 font-sans"></pre>
+                    <button id="siteProposalApprove" type="button" class="btn btn-gold text-sm" onclick="aprobarPropuestaSitio()">Aprobar borrador de vista previa</button>
+                </section>
+                <section id="siteApprovedDraftPanel" class="hidden space-y-2 rounded-xl border border-emerald-500/40 bg-emerald-950/20 p-4" aria-labelledby="siteApprovedDraftTitle">
+                    <h4 id="siteApprovedDraftTitle" class="font-bold text-emerald-200">Borrador aprobado — solo vista previa local</h4>
+                    <pre id="siteApprovedDraft" class="whitespace-pre-wrap break-words text-sm text-slate-200 font-sans"></pre>
+                    <p class="text-xs text-slate-400">Este borrador no se guarda en el servidor ni se incorpora al sitio. Cierra o limpia la sesion para descartarlo.</p>
+                </section>
+            </section>
         </section>
 
         <!-- VIEW 4: EXPRESS -->
@@ -442,6 +475,9 @@ No se verificaron los hechos, plazos, competencia ni normas. No presentes esta p
         const chatLegalMessages = [];
         const chatLegalEndpoint = document.querySelector('meta[name="legal-chat-endpoint"]')?.content || '/api/chat';
         let chatLegalPending = false;
+        const siteAssistantMessages = [];
+        let siteAssistantPending = false;
+        let siteAssistantProposal = '';
         let deferredInstallPrompt = null;
 
         window.addEventListener('beforeinstallprompt', event => {
@@ -539,6 +575,107 @@ No se verificaron los hechos, plazos, competencia ni normas. No presentes esta p
                 sendButton.textContent = 'Enviar';
                 input.focus();
             }
+        }
+
+        function agregarMensajeAsistenteSitio(role, content) {
+            const message = document.createElement('p');
+            message.className = role === 'user'
+                ? 'text-sm text-white bg-navy-800 rounded-lg p-3 ml-6'
+                : 'text-sm text-slate-200 bg-navy-900 border border-slate-800 rounded-lg p-3 mr-6 whitespace-pre-wrap';
+            message.textContent = content;
+            document.getElementById('siteAssistantMessages').appendChild(message);
+            message.scrollIntoView({ block: 'nearest' });
+        }
+
+        function limpiarAsistenteSitio() {
+            siteAssistantMessages.length = 0;
+            siteAssistantProposal = '';
+            document.getElementById('siteAssistantMessages').replaceChildren();
+            agregarMensajeAsistenteSitio('assistant', 'Hola. Describe una mejora de contenido o interfaz. Recibiras una propuesta para revisar; no se modifican archivos ni se publica automaticamente.');
+            document.getElementById('siteAssistantError').textContent = '';
+            document.getElementById('siteProposalPreview').textContent = '';
+            document.getElementById('siteProposalReview').classList.add('hidden');
+            const approveButton = document.getElementById('siteProposalApprove');
+            approveButton.disabled = false;
+            approveButton.textContent = 'Aprobar borrador de vista previa';
+            document.getElementById('siteApprovedDraft').textContent = '';
+            document.getElementById('siteApprovedDraftPanel').classList.add('hidden');
+            document.getElementById('siteAssistantStatus').textContent = 'Describe una mejora para recibir una propuesta revisable.';
+        }
+
+        async function enviarIdeaAsistenteSitio(event) {
+            event.preventDefault();
+            if (siteAssistantPending) return;
+
+            const input = document.getElementById('siteAssistantInput');
+            const content = input.value.trim();
+            if (!content) return;
+
+            const status = document.getElementById('siteAssistantStatus');
+            const error = document.getElementById('siteAssistantError');
+            const sendButton = document.getElementById('siteAssistantSendButton');
+            const clearButton = document.getElementById('siteAssistantClearButton');
+            siteAssistantPending = true;
+            sendButton.disabled = true;
+            sendButton.textContent = 'Preparando...';
+            clearButton.disabled = true;
+            status.textContent = 'Generando propuesta para revisar...';
+            error.textContent = '';
+            siteAssistantProposal = '';
+            document.getElementById('siteProposalReview').classList.add('hidden');
+            document.getElementById('siteApprovedDraftPanel').classList.add('hidden');
+            input.value = '';
+            siteAssistantMessages.push({ role: 'user', content });
+            if (siteAssistantMessages.length > 20) siteAssistantMessages.splice(0, siteAssistantMessages.length - 20);
+            agregarMensajeAsistenteSitio('user', content);
+
+            const requestController = new AbortController();
+            const requestTimeout = setTimeout(() => requestController.abort(), 30000);
+            try {
+                const response = await fetch(chatLegalEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mode: 'site-editor', messages: siteAssistantMessages.slice(-20) }),
+                    signal: requestController.signal
+                });
+                if (!response.ok) throw new Error('site_assistant_unavailable');
+
+                const data = await response.json();
+                if (!data || typeof data.reply !== 'string' || !data.reply.trim()) {
+                    throw new Error('invalid_site_assistant_response');
+                }
+
+                siteAssistantProposal = data.reply.trim();
+                siteAssistantMessages.push({ role: 'assistant', content: siteAssistantProposal });
+                if (siteAssistantMessages.length > 20) siteAssistantMessages.splice(0, siteAssistantMessages.length - 20);
+                agregarMensajeAsistenteSitio('assistant', siteAssistantProposal);
+                document.getElementById('siteProposalPreview').textContent = siteAssistantProposal;
+                document.getElementById('siteProposalReview').classList.remove('hidden');
+                const approveButton = document.getElementById('siteProposalApprove');
+                approveButton.disabled = false;
+                approveButton.textContent = 'Aprobar borrador de vista previa';
+                status.textContent = 'Propuesta lista. Revísala antes de aprobar el borrador local.';
+            } catch {
+                status.textContent = 'Servicio de IA no disponible.';
+                error.textContent = 'No se pudo obtener una propuesta. El servidor de IA puede no estar configurado o disponible; intenta más tarde.';
+            } finally {
+                clearTimeout(requestTimeout);
+                siteAssistantPending = false;
+                sendButton.disabled = false;
+                sendButton.textContent = 'Proponer';
+                clearButton.disabled = false;
+                input.focus();
+            }
+        }
+
+        function aprobarPropuestaSitio() {
+            if (!siteAssistantProposal) return;
+            document.getElementById('siteApprovedDraft').textContent = siteAssistantProposal;
+            document.getElementById('siteApprovedDraftPanel').classList.remove('hidden');
+            const approveButton = document.getElementById('siteProposalApprove');
+            approveButton.disabled = true;
+            approveButton.textContent = 'Borrador aprobado';
+            document.getElementById('siteAssistantStatus').textContent = 'Borrador aprobado y materializado solo en esta vista local. No se modificaron archivos ni el sitio publicado.';
         }
 
         class LexCoreEngine {
