@@ -41,7 +41,7 @@ function createEnvironment(overrides = {}) {
     };
 }
 
-function chatRequest(contentType = 'application/json') {
+function chatRequest(contentType = 'application/json', mode) {
     return new Request('https://worker.test/api/chat', {
         method: 'POST',
         headers: {
@@ -50,6 +50,7 @@ function chatRequest(contentType = 'application/json') {
             'Content-Type': contentType
         },
         body: JSON.stringify({
+            ...(mode === undefined ? {} : { mode }),
             messages: [{ role: 'user', content: 'Pregunta de prueba' }]
         })
     });
@@ -89,6 +90,36 @@ test('chat calls Workers AI with the legal guidance and returns its response', a
     assert.match(call.input.messages[0].content, /No ayudes a planear/);
     assert.match(call.input.messages[0].content, /No amenaces ni borres o danies datos/);
     assert.equal(call.input.messages.at(-1).content, 'Pregunta de prueba');
+});
+
+test('site editor mode requests safe text proposals instead of code or automatic edits', async () => {
+    let call;
+    const worker = createWorker();
+    const env = createEnvironment({
+        AI: {
+            run: async (model, input) => {
+                call = { model, input };
+                return { response: 'Objetivo: mejorar. Propuesta: texto claro. Vista previa textual: Bienvenido.' };
+            }
+        }
+    });
+
+    const response = await worker.fetch(chatRequest('application/json', 'site-editor'), env);
+    const body = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.match(body.reply, /Vista previa textual/);
+    assert.match(call.input.messages[0].content, /No devuelvas HTML, CSS, JavaScript ni codigo ejecutable/);
+    assert.match(call.input.messages[0].content, /No afirmes que cambiaste archivos/);
+    assert.equal(call.input.max_tokens, 1000);
+});
+
+test('chat rejects unsupported modes', async () => {
+    const worker = createWorker();
+    const response = await worker.fetch(chatRequest('application/json', 'autonomous-deploy'), createEnvironment());
+
+    assert.equal(response.status, 400);
+    assert.deepEqual(await response.json(), { error: 'INVALID_MODE' });
 });
 
 test('chat rejects non-JSON media types', async () => {
