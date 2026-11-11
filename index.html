@@ -131,6 +131,25 @@
                 <button onclick="switchView('agendar')" class="btn btn-gold text-xs py-2 px-4 shadow-md">📅 Agendar Cita</button>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto px-4 pb-3 flex flex-wrap items-center gap-2">
+            <details id="mobileNavigation" class="lg:hidden relative">
+                <summary class="btn btn-outline text-xs">☰ Menú</summary>
+                <nav aria-label="Navegación móvil" class="absolute left-0 top-full mt-2 w-64 max-h-[70vh] overflow-y-auto bg-navy-900 border border-slate-700 rounded-xl p-3 shadow-xl flex flex-col gap-1">
+                    <button class="btn btn-outline text-xs" onclick="switchView('home')">Inicio</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('materias')">12 Materias</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('jurisprudencia')">Jurisprudencias SJF</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('videoteca')">Videoteca SCJN</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('ai')">LegalTech AI</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('express')">Express</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('contratos')">Contratos</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('gestion')">LexControl</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Cotizador</button>
+                    <button class="btn btn-outline text-xs" onclick="openAdminModal(); document.getElementById('mobileNavigation').open = false">Panel</button>
+                </nav>
+            </details>
+            <button type="button" id="installAppButton" class="btn btn-outline text-xs border-gold-500/40 text-gold-400" aria-controls="installAppHelp" aria-expanded="false">📲 Instalar app</button>
+            <p id="installAppHelp" class="hidden text-xs text-slate-300" role="status"></p>
+        </div>
     </header>
 
     <!-- CONTENIDO DINÁMICO SPA (SIN RECARGAS Y SIN SECCIONES ROTAS) -->
@@ -150,7 +169,7 @@
                     <div class="flex flex-wrap gap-4 pt-2">
                         <button onclick="switchView('ai')" class="btn btn-gold text-sm shadow-xl">🤖 Redactor IA Dogmático</button>
                         <button onclick="switchView('materias')" class="btn btn-outline text-sm">⚖️ Ver 12 Especialidades</button>
-                        <button onclick="switchView('jurisprudencia')" class="btn btn-outline text-sm border-gold-500/50 text-gold-400">🏛️ Tesis SJF en Vivo</button>
+                        <button onclick="switchView('jurisprudencia')" class="btn btn-outline text-sm border-gold-500/50 text-gold-400">🏛️ Consultar tesis SJF</button>
                         <button onclick="switchView('videoteca')" class="btn btn-outline text-sm border-rose-600/50 text-rose-300">🎬 Videoteca SCJN</button>
                         <a href="https://wa.me/529519408062?text=Hola%20Lic.%20Daniel%20Carrasco%2C%20requiero%20asesoría%20jurídica%20urgente" target="_blank" class="btn btn-whatsapp text-sm">💬 WhatsApp Despacho</a>
                     </div>
@@ -225,18 +244,19 @@
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-4">
                 <div>
                     <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-1.5 mb-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> RADAR EN VIVO · SEMANARIO JUDICIAL DE LA FEDERACIÓN
+                        SEMANARIO JUDICIAL DE LA FEDERACIÓN
                     </span>
                     <h2 class="text-3xl font-serif font-bold text-white">Visualizador de Tesis & Precedentes Obligatorios</h2>
                     <p class="text-xs text-slate-400 mt-1">Criterios vinculantes de la Undécima y Duodécima Épocas aplicables en los Juzgados de Distrito del 13.er Circuito.</p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <span id="sjfLastCheckLabel" class="text-xs text-slate-400 font-mono">Actualizado en vivo</span>
-                    <button class="btn btn-gold text-xs py-2 px-3" onclick="refrescarTesisSJF()">🔄 Verificar Nuevas Tesis</button>
+                    <span id="sjfLastCheckLabel" class="text-xs text-slate-400 font-mono">Consulta directa en el SJF</span>
+                    <a class="btn btn-gold text-xs py-2 px-3" href="https://sjf.scjn.gob.mx/SJFHome/home" target="_blank" rel="noopener noreferrer">🔎 Verificar en el SJF oficial</a>
                 </div>
             </div>
 
             <!-- BUSCADOR Y FILTROS -->
+            <p class="bg-amber-950/40 border border-amber-700 rounded-xl p-4 text-sm text-amber-200">Los registros de esta página son una selección local, no una consulta en vivo. Verifica cada tesis, su vigencia y su aplicación en el Semanario Judicial oficial antes de usarla.</p>
             <div class="bg-navy-900 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3">
                 <input type="text" id="tesisSearchInp" placeholder="Buscar por Registro Digital, Rubro o Materia (Amparo, Clausura, Penal, Militar)..." class="lex-input flex-1" oninput="filtrarTesis()">
                 <select id="tesisMatFilter" class="lex-select sm:w-48" onchange="filtrarTesis()">
@@ -255,6 +275,11 @@
 
             <!-- CONTENEDOR DE TESIS -->
             <div id="tesisContainerList" class="space-y-4"></div>
+            <div class="bg-navy-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                <h3 class="font-serif font-bold text-white">Sesiones y videos de la Suprema Corte</h3>
+                <p class="text-sm text-slate-300">Consulta grabaciones oficiales del Pleno y materiales audiovisuales en la videoteca.</p>
+                <button type="button" class="btn btn-outline text-xs" onclick="switchView('videoteca')">🎬 Abrir videoteca SCJN</button>
+            </div>
         </section>
 
         <!-- VIEW: VIDEOTECA SCJN & JUSTICIA TV -->
@@ -273,15 +298,17 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div class="lg:col-span-8 bg-navy-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl space-y-4">
                     <div class="relative w-full pb-[56.25%] bg-black">
-                        <iframe id="scjnMainVideoIframe" class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/live_stream?channel=UC8WbZ_wG7dF5W1qZqgQkIug" title="JusticiaTV SCJN en Vivo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe id="scjnMainVideoIframe" class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLfdH6QBcnQx1CK4cXlQ8pzZ_VeESwhcND" title="Sesiones del Pleno de la Suprema Corte" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-6 space-y-2">
                         <div class="flex items-center gap-2">
-                            <span class="bg-red-700 text-white font-extrabold px-2 py-0.5 rounded text-[10px]">EN VIVO / RECIENTE</span>
-                            <span class="text-xs text-slate-400">Lunes, Martes y Jueves 11:00 AM</span>
+                            <span class="bg-red-700 text-white font-extrabold px-2 py-0.5 rounded text-[10px]">LISTA OFICIAL</span>
+                            <span class="text-xs text-slate-400">Sesiones disponibles en YouTube</span>
                         </div>
                         <h3 id="scjnVideoTitle" class="text-lg font-serif font-bold text-white">Sesión Pública Ordinaria del Pleno de la Suprema Corte de Justicia de la Nación</h3>
-                        <p id="scjnVideoDesc" class="text-xs text-slate-300 leading-relaxed">Discusión de Acciones de Inconstitucionalidad, Controversias y Amparos en Revisión para la integración de jurisprudencia por precedente obligatorio.</p>
+                        <p id="scjnVideoDesc" class="text-xs text-slate-300 leading-relaxed">Lista de sesiones publicada por el canal oficial de la SCJN. La reproducción depende de la disponibilidad y restricciones de YouTube.</p>
+                        <a id="scjnVideoExternal" href="https://www.youtube.com/playlist?list=PLfdH6QBcnQx1CK4cXlQ8pzZ_VeESwhcND" target="_blank" rel="noopener noreferrer" class="btn btn-outline text-xs">Abrir en YouTube ↗</a>
+                        <a href="https://www.scjn.gob.mx/video/sesiones-pleno" target="_blank" rel="noopener noreferrer" class="btn btn-outline text-xs">Consultar sesiones en SCJN ↗</a>
                     </div>
                 </div>
 
@@ -333,6 +360,7 @@
                     <span>🛡️</span> Simulación Dialéctica: Postulante vs. Proyectista de Juzgado de Distrito
                 </div>
                 <p class="text-slate-300">Audita tu pretensión constitucional para neutralizar causas de improcedencia del artículo 61 de la Ley de Amparo y objeciones de orden público.</p>
+                <p class="text-amber-200">Demostración con texto predefinido: no realiza un análisis del caso ni sustituye una revisión profesional.</p>
                 <textarea id="inp_pair_text" rows="3" class="lex-textarea">Se solicita suspensión provisional con efectos restitutorios contra la orden de clausura inmediata del establecimiento comercial en Oaxaca.</textarea>
                 <button class="btn btn-outline text-indigo-300 border-indigo-500 w-full justify-center" onclick="ejecutarAnalisisEnParUI()">🛡️ Correr Escrutinio Red Team</button>
                 <div id="pairResultBox" class="bg-navy-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">Presiona el botón para correr la confronta analítica.</div>
@@ -344,6 +372,7 @@
                     <span>🤖</span> Triage Legal Comunitario (r/DerechoMexicano & r/LegalTech)
                 </div>
                 <p class="text-slate-300">Traduce una duda ciudadana en una ruta procesal con diagnóstico de violaciones al debido proceso.</p>
+                <p class="text-amber-200">Demostración con texto predefinido: no consulta Reddit ni realiza un diagnóstico del caso.</p>
                 <textarea id="inp_reddit_text" rows="3" class="lex-textarea">Me notificaron que me van a cerrar el negocio en 3 días sin darme copia del expediente ni derecho de audiencia previa teniendo mi licencia vigente.</textarea>
                 <button class="btn btn-outline text-orange-300 border-orange-500 w-full justify-center" onclick="ejecutarTriageRedditUI()">🤖 Procesar Triage & Plan de Acción</button>
                 <div id="redditResultBox" class="bg-navy-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">Presiona el botón para procesar la consulta.</div>
@@ -393,6 +422,7 @@
         <!-- VIEW 5: CONTRATOS -->
         <section id="view-contratos" class="space-y-6 hidden">
             <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">Elaboración Inteligente de Contratos</h2><p class="text-slate-400 text-sm">Instrumentos conformes al Código Civil de Oaxaca.</p></div>
+            <p class="text-amber-200 text-sm text-center">Esta pantalla es una demostración: el botón no genera ni guarda un contrato. Solicita su elaboración al despacho.</p>
             <div class="bg-navy-900 p-8 rounded-2xl border border-slate-800 max-w-3xl mx-auto space-y-4 text-xs">
                 <label class="block font-bold text-gold-400">Tipo de Contrato</label>
                 <select id="ctrTipo" class="lex-select"><option>Arrendamiento Inmobiliario (Oaxaca)</option><option>Prestación de Servicios Profesionales</option><option>Compraventa con Reserva de Dominio</option></select>
@@ -412,6 +442,7 @@
                     <h2 class="text-lg font-serif font-bold text-white">📁 GESTIÓN DE EXPEDIENTES (LEXCONTROL PRO)</h2>
                     <button class="btn btn-gold text-xs" onclick="lexNuevoExpediente()">+ Nuevo Asunto</button>
                 </header>
+                <p class="text-amber-200 text-sm">Demostración: guardar cambios no conserva los datos y este sitio no ofrece almacenamiento protegido de expedientes. No ingreses información confidencial.</p>
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div class="lg:col-span-4 bg-navy-950 p-4 rounded-xl border border-slate-800 space-y-2" id="lexListaExpedientes"></div>
                     <div class="lg:col-span-8 bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-3 text-xs">
@@ -439,16 +470,75 @@
         <!-- VIEW 8: AGENDAR -->
         <section id="view-agendar" class="space-y-6 hidden max-w-2xl mx-auto">
             <div class="bg-navy-900 border border-slate-800 rounded-2xl p-8 space-y-6 text-slate-100 shadow-2xl">
-                <h2 class="text-2xl font-serif font-bold text-white text-center">📅 Agendar Asesoría con el Titular</h2>
+                <h2 class="text-2xl font-serif font-bold text-white text-center">📅 Solicitar Asesoría Jurídica</h2>
+                <p class="text-sm text-slate-300 text-center">Indica tus preferencias para que el despacho pueda dar seguimiento. La fecha y modalidad solicitadas quedan sujetas a confirmación.</p>
                 <form onsubmit="event.preventDefault(); registrarCitaPro();" class="space-y-4 text-xs">
-                    <input type="text" id="pro_nombre" placeholder="Nombre Completo *" class="lex-input" required>
-                    <input type="tel" id="pro_telefono" placeholder="WhatsApp / Teléfono *" class="lex-input" required>
-                    <input type="email" id="pro_correo" placeholder="Correo Electrónico *" class="lex-input" required>
-                    <input type="date" id="pro_fecha" class="lex-input" required>
-                    <button type="submit" class="btn btn-gold w-full justify-center py-3">✅ Confirmar Ficha de Cita</button>
+                    <label class="block text-slate-300 font-semibold" for="pro_nombre">Nombre completo</label>
+                    <input type="text" id="pro_nombre" autocomplete="name" class="lex-input" required>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_telefono">WhatsApp / Teléfono</label>
+                            <input type="tel" id="pro_telefono" autocomplete="tel" class="lex-input" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_correo">Correo electrónico</label>
+                            <input type="email" id="pro_correo" autocomplete="email" class="lex-input" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_materia">Materia</label>
+                            <select id="pro_materia" class="lex-select" required>
+                                <option value="">Selecciona una materia</option>
+                                <option>Amparo y constitucional</option>
+                                <option>Penal / FGR / FGEO</option>
+                                <option>Militar y fuero de guerra</option>
+                                <option>Administrativa y fiscal</option>
+                                <option>Laboral y burocrática</option>
+                                <option>Civil, familiar y mercantil</option>
+                                <option>Agraria e indígena</option>
+                                <option>Otra materia</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_modalidad">Modalidad preferida</label>
+                            <select id="pro_modalidad" class="lex-select" required>
+                                <option value="">Selecciona modalidad</option>
+                                <option>Presencial</option>
+                                <option>Videollamada</option>
+                                <option>Llamada telefónica</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_fecha">Fecha preferida</label>
+                            <input type="date" id="pro_fecha" class="lex-input" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-slate-300 font-semibold" for="pro_hora">Horario preferido</label>
+                            <select id="pro_hora" class="lex-select" required>
+                                <option value="">Selecciona horario</option>
+                                <option>Mañana</option>
+                                <option>Tarde</option>
+                                <option>Indistinto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="flex items-start gap-2 text-slate-300 leading-relaxed">
+                        <input type="checkbox" id="pro_whatsapp_consent" class="mt-0.5 accent-amber-400" required>
+                        <span>Entiendo que el botón abrirá WhatsApp con los datos anteriores en un mensaje para que pueda revisarlo antes de enviarlo. La solicitud no queda confirmada hasta recibir respuesta del despacho.</span>
+                    </label>
+                    <p class="text-slate-400 leading-relaxed">Este formulario no guarda la información en el sitio. No incluyas detalles confidenciales ni adjuntes documentos; comparte información del asunto directamente con el despacho por un medio acordado.</p>
+                    <button type="submit" class="btn btn-gold w-full justify-center py-3">Continuar en WhatsApp</button>
                 </form>
-                <div id="proConfirmationSlip" class="hidden bg-emerald-950 border border-emerald-500 rounded-xl p-4 text-xs text-emerald-200">
-                    <strong>🎉 ¡Cita Registrada con Éxito!</strong> Nos comunicaremos de inmediato al número proporcionado.
+                <div id="proConfirmationSlip" class="hidden bg-emerald-950 border border-emerald-500 rounded-xl p-4 text-xs text-emerald-200" role="status" aria-live="polite">
+                    <strong>Solicitud preparada.</strong> Revisa y envía el mensaje en WhatsApp. La cita solo se confirma cuando el despacho responda.
+                    <a id="proWhatsappLink" class="hidden underline font-bold mt-2" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+                </div>
+                <div class="bg-navy-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 space-y-2">
+                    <h3 class="font-bold text-gold-400">Para preparar la asesoría</h3>
+                    <p>Ten a la mano, si corresponde, fechas importantes y documentos relacionados. No los envíes mediante este formulario ni compartas aquí datos de expedientes o de otras personas.</p>
                 </div>
             </div>
         </section>
@@ -464,6 +554,7 @@
                     <span class="text-3xl">🔒</span>
                     <h3 class="text-xl font-serif font-bold text-white">Acceso al Panel de Control</h3>
                     <p class="text-xs text-slate-400">Ingrese su PIN de Acceso o Contraseña Maestra.</p>
+                    <p class="text-xs text-amber-200">Panel demostrativo: no cuenta con autenticación segura ni protección de datos. No ingreses contraseñas reales ni información confidencial.</p>
                 </div>
                 <div class="bg-navy-950 p-6 rounded-2xl border border-slate-800 space-y-3 max-w-sm mx-auto text-xs">
                     <label class="block text-slate-300 font-semibold">Usuario / Correo</label>
@@ -504,6 +595,7 @@
     <!-- SCRIPTS DE NAVEGACIÓN Y FUNCIONALIDAD INTEGRADA -->
     <script>
         function switchView(v) {
+            document.getElementById('mobileNavigation').open = false;
             ['view-home', 'view-materias', 'view-jurisprudencia', 'view-videoteca', 'view-ai', 'view-express', 'view-contratos', 'view-gestion', 'view-cotizador', 'view-agendar'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.style.display = 'none';
@@ -747,9 +839,12 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
                 if (chatLegalMessages.length > 20) chatLegalMessages.splice(0, chatLegalMessages.length - 20);
                 agregarMensajeChat('assistant', reply.trim());
                 status.textContent = 'Respuesta recibida.';
-            } catch {
-                status.textContent = 'Servicio de IA local activo.';
-                agregarMensajeChat('assistant', 'En términos de los artículos 14 y 16 constitucionales y 147 de la Ley de Amparo, procede la defensa constitucional inmediata. Puedes comunicarte directamente al WhatsApp 951 940 8062 con el Lic. Daniel Carrasco Enríquez para estudio de fondo.');
+            } catch (requestError) {
+                console.error('No se pudo obtener una respuesta del chat:', requestError);
+                chatLegalMessages.pop();
+                if (!input.value.trim()) input.value = content;
+                status.textContent = 'Servicio de IA no disponible.';
+                error.textContent = 'No se recibió una respuesta. Intenta enviar tu pregunta de nuevo o contacta al despacho directamente.';
             } finally {
                 clearTimeout(requestTimeout);
                 chatLegalPending = false;
@@ -863,57 +958,36 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
             mostrarToast("📋 Cita jurisprudencial copiada al portapapeles.");
         }
 
-        function refrescarTesisSJF() {
-            const time = new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('sjfLastCheckLabel').textContent = time + " (Al día)";
-            if(tesisDataset.length === 5) {
-                tesisDataset.unshift({
-                    reg: '2033012',
-                    instancia: 'Segunda Sala de la SCJN',
-                    epoca: 'Duodécima Época',
-                    tipo: 'Jurisprudencia',
-                    materia: 'Administrativa',
-                    tesisNum: '2a./J. 45/2026 (12a.)',
-                    rubro: 'MEDIDAS CAUTELARES EN JUICIO CONTENCIOSO ADMINISTRATIVO Y AMPARO. SU ALCANCE RESTITUTORIO PREVIENE DAÑOS IRREPARABLES.',
-                    criterio: 'Las salas de justicia administrativa y juzgados de distrito deben decretar la inmediata restitución cautelar cuando la autoridad demandada actúe con notoria carencia de fundamentación competencial.'
-                });
-                filtrarTesis();
-                mostrarToast("⚡ Radar SJF: 1 nueva jurisprudencia detectada e incorporada.");
-            } else {
-                mostrarToast("✓ Base verificada: Al corriente con el Semanario Judicial.");
-            }
-        }
-
         // ============================================================
         // VIDEOTECA SCJN & JUSTICIA TV
         // ============================================================
         const scjnVideos = [
-            { id: 'live_stream?channel=UC8WbZ_wG7dF5W1qZqgQkIug', title: 'JusticiaTV – Canal del Poder Judicial de la Federación (En Vivo)', desc: 'Transmisión oficial de sesiones públicas del Pleno de la SCJN.', badge: 'EN VIVO' },
-            { id: 'sM3aZ2o8TCo', title: 'Debate del Pleno: Alcance de las Suspensiones y Efectos Restitutorios', desc: 'Interpretación del artículo 147 de la Ley de Amparo y tutela judicial efectiva.', badge: 'PLENO' },
-            { id: '2g811Eo7K8U', title: 'Reforma al Poder Judicial y Sistema de Precedentes de la Undécima Época', desc: 'Conferencia magistral del Centro de Estudios Constitucionales de la SCJN.', badge: 'DOCTRINA' },
-            { id: 'bTqVqk7FSmY', title: 'Garantía de Audiencia Previa y Control Difuso de Convencionalidad', desc: 'Análisis de resoluciones sobre inconstitucionalidad de clausuras sin procedimiento previo.', badge: 'DERECHOS' }
+            { list: 'PLfdH6QBcnQx1CK4cXlQ8pzZ_VeESwhcND', title: 'Sesiones del Pleno de la SCJN', desc: 'Lista de sesiones publicada por el canal oficial de la SCJN.', badge: 'PLENO' },
+            { list: 'PLfdH6QBcnQx0h4IEvzg_fcUER0Ae5Jie1', title: 'Sesiones de las Salas de la SCJN', desc: 'Lista de sesiones de las Salas publicada por el canal oficial de la SCJN.', badge: 'SALAS' }
         ];
 
         function renderVideoteca() {
             const c = document.getElementById('scjnPlaylistContainer');
             if(!c) return;
             c.innerHTML = scjnVideos.map((v, i) => `
-                <div class="p-3 bg-navy-950 border border-slate-800 hover:border-gold-500 rounded-xl cursor-pointer transition space-y-1" onclick="selectScjnVideo(${i})">
+                <button type="button" class="w-full text-left p-3 bg-navy-950 border border-slate-800 hover:border-gold-500 rounded-xl cursor-pointer transition space-y-1" onclick="selectScjnVideo(${i})">
                     <div class="flex justify-between text-[10px]">
                         <span class="px-1.5 py-0.5 rounded font-bold ${i === 0 ? 'bg-red-700 text-white' : 'bg-slate-800 text-slate-300'}">${v.badge}</span>
                         <span class="text-slate-500">SCJN Oficial</span>
                     </div>
                     <div class="text-xs font-bold text-white line-clamp-2">${v.title}</div>
-                </div>
+                </button>
             `).join('');
         }
 
         function selectScjnVideo(idx) {
             const v = scjnVideos[idx];
-            document.getElementById('scjnMainVideoIframe').src = `https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1`;
+            document.getElementById('scjnMainVideoIframe').src = `https://www.youtube-nocookie.com/embed/videoseries?list=${v.list}`;
+            document.getElementById('scjnMainVideoIframe').title = v.title;
+            document.getElementById('scjnVideoExternal').href = `https://www.youtube.com/playlist?list=${v.list}`;
             document.getElementById('scjnVideoTitle').textContent = v.title;
             document.getElementById('scjnVideoDesc').textContent = v.desc;
-            mostrarToast("Reproduciendo: " + v.title);
+            mostrarToast("Lista seleccionada: " + v.title);
         }
 
         // LEXCONTROL
@@ -939,12 +1013,32 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
         }
 
         function registrarCitaPro() {
+            const fields = {
+                nombre: document.getElementById('pro_nombre').value.trim(),
+                telefono: document.getElementById('pro_telefono').value.trim(),
+                correo: document.getElementById('pro_correo').value.trim(),
+                materia: document.getElementById('pro_materia').value,
+                modalidad: document.getElementById('pro_modalidad').value,
+                fecha: document.getElementById('pro_fecha').value,
+                horario: document.getElementById('pro_hora').value
+            };
+            const fechaPreferida = new Date(`${fields.fecha}T12:00:00`).toLocaleDateString('es-MX');
+            const message = [
+                'Hola, solicito una asesoría jurídica.',
+                `Nombre: ${fields.nombre}`,
+                `Teléfono: ${fields.telefono}`,
+                `Correo: ${fields.correo}`,
+                `Materia: ${fields.materia}`,
+                `Modalidad preferida: ${fields.modalidad}`,
+                `Fecha preferida: ${fechaPreferida}`,
+                `Horario preferido: ${fields.horario}`
+            ].join('\n');
+            const whatsappLink = document.getElementById('proWhatsappLink');
+            whatsappLink.href = `https://wa.me/529519408062?text=${encodeURIComponent(message)}`;
+            whatsappLink.classList.remove('hidden');
             document.getElementById('proConfirmationSlip').classList.remove('hidden');
-            mostrarToast("✅ Ficha de cita oficial generada.");
-            const nom = document.getElementById('pro_nombre').value;
-            const tel = document.getElementById('pro_telefono').value;
-            const fec = document.getElementById('pro_fecha').value;
-            window.open(`https://wa.me/529519408062?text=Hola%20Lic.%20Daniel%20Carrasco,%20agende%20cita%20a%20nombre%20de%20${encodeURIComponent(nom)}%20(Tel:%20${encodeURIComponent(tel)})%20para%20la%20fecha%20${encodeURIComponent(fec)}`, '_blank');
+            mostrarToast("Solicitud preparada; falta enviarla y recibir confirmación.");
+            window.open(whatsappLink.href, '_blank', 'noopener,noreferrer');
         }
 
         class LexCoreEngine {
@@ -959,5 +1053,6 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
             switchView('home');
         });
     </script>
+    <script defer src="app-install.js"></script>
 </body>
 </html>
