@@ -33,6 +33,7 @@ test('public pages remove simulated access and exposed LexControl records', () =
 test('public page restores zoom, readable text, accessible controls, and valid icons', async () => {
     assert.match(html, /name="viewport" content="width=device-width, initial-scale=1\.0"/);
     assert.doesNotMatch(html, /maximum-scale|user-scalable=no|text-slate-500|text-slate-600/);
+    assert.doesNotMatch(html, /bg-red-700[^"]*\banimate-pulse/);
     const headingLevels = [...html.matchAll(/<h([1-6])\b/gi)].map(([, level]) => Number(level));
     for (let index = 1; index < headingLevels.length; index += 1) {
         assert.ok(headingLevels[index] <= headingLevels[index - 1] + 1, 'heading levels must not skip');
