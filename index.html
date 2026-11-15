@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
+    <link rel="icon" type="image/svg+xml" href="/icons/legaltech-icon.svg">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- SEO & INDEXACIÓN GOOGLE MÁXIMA VISIBILIDAD -->
     <title>Legal Tech Oaxaca | Firma Legal Digital · Lic. Daniel Carrasco Enríquez</title>
     <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Juicio de amparo indirecto, derecho militar, consejos de honor, carpetas FGR/FGEO y gestión procesal. Lic. Daniel Carrasco Enríquez. Céd. Prof. 14971373.">
@@ -20,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -85,9 +87,9 @@
             </div>
             <div class="flex items-center space-x-4 text-slate-300">
                 <a href="https://www.buholegal.com/" target="_blank" class="hover:text-gold-400">🎓 Céd. Prof. 14971373</a>
-                <span class="text-slate-600">|</span>
+                <span class="text-slate-400">|</span>
                 <a href="tel:+529519408062" class="hover:text-gold-400 font-semibold">📞 951 940 8062</a>
-                <span class="text-slate-600">|</span>
+                <span class="text-slate-400">|</span>
                 <span class="bg-navy-800 px-2.5 py-0.5 rounded border border-slate-700 text-gold-400 font-bold">SISE: CARRASCO99</span>
             </div>
         </div>
@@ -123,7 +125,7 @@
                 <button class="nav-btn-contratos px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('contratos')">📝 Contratos</button>
                 <button class="nav-btn-gestion px-3 py-2 rounded-lg text-gold-400 bg-navy-800 border border-gold-500/30 transition" onclick="switchView('gestion')">📁 LexControl</button>
                 <button class="nav-btn-cotizador px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('cotizador')">📊 Cotizador</button>
-                <button class="px-3 py-2 rounded-lg text-amber-300 bg-amber-500/20 border border-amber-500/40 font-bold" onclick="openAdminModal()">🔒 Panel</button>
+                <button class="px-3 py-2 rounded-lg text-amber-300 bg-amber-500/20 border border-amber-500/40 font-bold" disable aria-label="Panel privado temporalmente deshabilitado; no captures credenciales aquí">Panel privado temporalmente deshabilitado</button>
             </nav>
 
             <div class="flex items-center space-x-2">
@@ -144,7 +146,7 @@
                     <button class="btn btn-outline text-xs" onclick="switchView('contratos')">Contratos</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('gestion')">LexControl</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Cotizador</button>
-                    <button class="btn btn-outline text-xs" onclick="openAdminModal(); document.getElementById('mobileNavigation').open = false">Panel</button>
+                    <button class="btn btn-outline text-xs" disable aria-label="Panel privado temporalmente deshabilitado; no captures credenciales aquí">Panel privado temporalmente deshabilitado</button>
                 </nav>
             </details>
             <a href="https://legaltech-oaxaca-private-portal.legaltech-oaxaca-chat.workers.dev/" class="btn btn-outline text-xs border-gold-500/40 text-gold-400">Acceso privado</a>
@@ -177,7 +179,7 @@
                 </div>
                 <div class="lg:col-span-5 bg-navy-900 p-8 rounded-2xl border border-slate-800 text-center space-y-4 shadow-2xl">
                     <div class="w-16 h-16 bg-gold-500/20 border border-gold-500/50 rounded-2xl mx-auto flex items-center justify-center text-3xl">⚖️</div>
-                    <h3 class="font-serif font-bold text-xl text-white">LEGAL TECH OAXACA</h3>
+                    <h2 class="font-serif font-bold text-xl text-white">LEGAL TECH OAXACA</h2>
                     <p class="text-xs text-slate-400">Corporativo Jurídico & Litigio de Alto Impacto</p>
                     <div class="pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-xs text-slate-300">
                         <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800"><strong>PJF SISE</strong><br><span class="text-gold-400 font-mono">CARRASCO99</span></div>
@@ -259,15 +261,15 @@
             <!-- BUSCADOR Y FILTROS -->
             <p class="bg-amber-950/40 border border-amber-700 rounded-xl p-4 text-sm text-amber-200">Los registros de esta página son una selección local, no una consulta en vivo. Verifica cada tesis, su vigencia y su aplicación en el Semanario Judicial oficial antes de usarla.</p>
             <div class="bg-navy-900 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3">
-                <input type="text" id="tesisSearchInp" placeholder="Buscar por Registro Digital, Rubro o Materia (Amparo, Clausura, Penal, Militar)..." class="lex-input flex-1" oninput="filtrarTesis()">
-                <select id="tesisMatFilter" class="lex-select sm:w-48" onchange="filtrarTesis()">
+                <input type="text" id="tesisSearchInp" placeholder="Buscar por Registro Digital, Rubro o Materia (Amparo, Clausura, Penal, Militar)..." class="lex-input flex-1" oninput="filtrarTesis()" aria-label="Buscar tesis y precedentes">
+                <select id="tesisMatFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar por materia">
                     <option value="todas">Todas las Materias</option>
                     <option value="Común">Común / Amparo</option>
                     <option value="Administrativa">Administrativa</option>
                     <option value="Penal">Penal / Militar</option>
                     <option value="Civil">Civil / Mercantil</option>
                 </select>
-                <select id="tesisTipoFilter" class="lex-select sm:w-48" onchange="filtrarTesis()">
+                <select id="tesisTipoFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar por tipo">
                     <option value="todos">Todos los Tipos</option>
                     <option value="Jurisprudencia">Jurisprudencia (Obligatoria)</option>
                     <option value="Aislada">Tesis Aislada</option>
@@ -336,11 +338,11 @@
             <div id="aiSubToolRedactor" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div class="lg:col-span-5 bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-4 text-xs">
                     <label class="block font-bold text-gold-400">Autoridad Responsable</label>
-                    <input type="text" id="inp_ai_p1" class="lex-input" value="Juez de Control / Dirección General SEDENA / Consejo de Honor / Director de Comercio">
+                    <input type="text" id="inp_ai_p1" class="lex-input" aria-label="Nombre ficticio de la persona" placeholder="Ejemplo ficticio; no uses datos reales">
                     <label class="block font-bold text-gold-400">Acto Reclamado / Hechos</label>
-                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea">Orden de aprehensión, clausura o privación de derechos sin audiencia previa ni debida fundamentación competencial.</textarea>
+                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea" aria-label="Hechos del caso ficticio"></textarea>
                     <label class="block font-bold text-gold-400">Preceptos Constitucionales y Jurisprudencia</label>
-                    <input type="text" id="inp_ai_p3" class="lex-input" value="Artículos 1°, 14 y 16 CPEUM (Registro digital: 2026730 - Suspensión Restitutoria Art. 147)">
+                    <input type="text" id="inp_ai_p3" class="lex-input" aria-label="Autoridad responsable ficticia" placeholder="Ejemplo ficticio; no uses datos reales">
                     <button class="btn btn-gold w-full justify-center py-3 text-sm" onclick="generarEscritoIA()">⚡ Redactar Proyecto Jurídico</button>
                 </div>
                 <div class="lg:col-span-7 bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-3">
@@ -362,7 +364,7 @@
                 </div>
                 <p class="text-slate-300">Audita tu pretensión constitucional para neutralizar causas de improcedencia del artículo 61 de la Ley de Amparo y objeciones de orden público.</p>
                 <p class="text-amber-200">Demostración con texto predefinido: no realiza un análisis del caso ni sustituye una revisión profesional.</p>
-                <textarea id="inp_pair_text" rows="3" class="lex-textarea">Se solicita suspensión provisional con efectos restitutorios contra la orden de clausura inmediata del establecimiento comercial en Oaxaca.</textarea>
+                <textarea id="inp_pair_text" rows="3" class="lex-textarea" aria-label="Texto para comparar">Se solicita suspensión provisional con efectos restitutorios contra la orden de clausura inmediata del establecimiento comercial en Oaxaca.</textarea>
                 <button class="btn btn-outline text-indigo-300 border-indigo-500 w-full justify-center" onclick="ejecutarAnalisisEnParUI()">🛡️ Correr Escrutinio Red Team</button>
                 <div id="pairResultBox" class="bg-navy-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">Presiona el botón para correr la confronta analítica.</div>
             </div>
@@ -374,7 +376,7 @@
                 </div>
                 <p class="text-slate-300">Traduce una duda ciudadana en una ruta procesal con diagnóstico de violaciones al debido proceso.</p>
                 <p class="text-amber-200">Demostración con texto predefinido: no consulta Reddit ni realiza un diagnóstico del caso.</p>
-                <textarea id="inp_reddit_text" rows="3" class="lex-textarea">Me notificaron que me van a cerrar el negocio en 3 días sin darme copia del expediente ni derecho de audiencia previa teniendo mi licencia vigente.</textarea>
+                <textarea id="inp_reddit_text" rows="3" class="lex-textarea" aria-label="Texto para orientacion jurídica">Me notificaron que me van a cerrar el negocio en 3 días sin darme copia del expediente ni derecho de audiencia previa teniendo mi licencia vigente.</textarea>
                 <button class="btn btn-outline text-orange-300 border-orange-500 w-full justify-center" onclick="ejecutarTriageRedditUI()">🤖 Procesar Triage & Plan de Acción</button>
                 <div id="redditResultBox" class="bg-navy-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">Presiona el botón para procesar la consulta.</div>
             </div>
@@ -426,37 +428,18 @@
             <p class="text-amber-200 text-sm text-center">Esta pantalla es una demostración: el botón no genera ni guarda un contrato. Solicita su elaboración al despacho.</p>
             <div class="bg-navy-900 p-8 rounded-2xl border border-slate-800 max-w-3xl mx-auto space-y-4 text-xs">
                 <label class="block font-bold text-gold-400">Tipo de Contrato</label>
-                <select id="ctrTipo" class="lex-select"><option>Arrendamiento Inmobiliario (Oaxaca)</option><option>Prestación de Servicios Profesionales</option><option>Compraventa con Reserva de Dominio</option></select>
+                <select id="ctrTipo" class="lex-select" aria-label="Tipo de contrato"><option>Arrendamiento Inmobiliario (Oaxaca)</option><option>Prestación de Servicios Profesionales</option><option>Compraventa con Reserva de Dominio</option></select>
                 <div class="grid grid-cols-2 gap-3">
-                    <input type="text" id="ctrParte1" placeholder="Nombre Arrendador / Otorgante" class="lex-input">
-                    <input type="text" id="ctrParte2" placeholder="Nombre Inquilino / Receptor" class="lex-input">
+                    <input type="text" id="ctrParte1" placeholder="Nombre Arrendador / Otorgante" class="lex-input" aria-label="Primera parte del contrato">
+                    <input type="text" id="ctrParte2" placeholder="Nombre Inquilino / Receptor" class="lex-input" aria-label="Segunda parte del contrato">
                 </div>
-                <input type="text" id="ctrMonto" placeholder="Monto o Renta mensual (MXN)" class="lex-input">
+                <input type="text" id="ctrMonto" placeholder="Monto o Renta mensual (MXN)" class="lex-input" aria-label="Monto del contrato">
                 <button class="btn btn-gold w-full justify-center py-3" onclick="mostrarToast('✅ Contrato generado y listo para revisión.')">⚡ Generar Contrato Blindado</button>
             </div>
         </section>
 
         <!-- VIEW 6: LEXCONTROL -->
-        <section id="view-gestion" class="space-y-6 hidden">
-            <div class="bg-navy-900 border border-slate-800 rounded-2xl p-6 space-y-6">
-                <header class="flex justify-between items-center border-b border-slate-800 pb-4 flex-wrap gap-3">
-                    <h2 class="text-lg font-serif font-bold text-white">📁 GESTIÓN DE EXPEDIENTES (LEXCONTROL PRO)</h2>
-                    <button class="btn btn-gold text-xs" onclick="lexNuevoExpediente()">+ Nuevo Asunto</button>
-                </header>
-                <p class="text-amber-200 text-sm">Demostración: guardar cambios no conserva los datos y este sitio no ofrece almacenamiento protegido de expedientes. No ingreses información confidencial.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div class="lg:col-span-4 bg-navy-950 p-4 rounded-xl border border-slate-800 space-y-2" id="lexListaExpedientes"></div>
-                    <div class="lg:col-span-8 bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-3 text-xs">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div><label class="text-slate-400 block mb-1">Número de Expediente</label><input type="text" id="lexFieldExpediente" class="lex-input" value="1152/2026"></div>
-                            <div><label class="text-slate-400 block mb-1">Quejoso / Cliente</label><input type="text" id="lexFieldCliente" class="lex-input" value="YONATAN ÁLVAREZ"></div>
-                        </div>
-                        <div><label class="text-slate-400 block mb-1">Acto Reclamado</label><textarea id="lexFieldActo" class="lex-textarea" rows="2">Orden de arresto arbitraria.</textarea></div>
-                        <button class="btn btn-gold text-xs" onclick="lexGuardarExpedienteActual()">Guardar Cambios</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- VIEW 7: COTIZADOR -->
         <section id="view-cotizador" class="space-y-6 hidden max-w-4xl mx-auto">
@@ -544,48 +527,24 @@
             </div>
         </section>
 
-    </main>
+    <section id="view-gestion" class="space-y-6 hidden">
+<div class="max-w-3xl mx-auto rounded-2xl border border-amber-500/30 bg-slate-900 p-6">
+<h2 class="text-xl font-bold text-white">Gestión de expedientes</h2>
+<p class="mt-3 text-slate-300">Demostración no operativa: no existe almacenamiento protegido de expedientes.</p>
+<p class="mt-2 text-slate-300">No ingreses información confidencial. Este sitio público no guarda ni transmite expedientes.</p>
+</div>
+</section>
+</main>
 
     <!-- MODAL PANEL ADMIN (ACCESO CON PIN 951940 O CÉDULA 14971373) -->
-    <div id="modalAdmin" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('modalAdmin')">&times;</span>
-            <div id="adminLoginForm" class="space-y-5">
-                <div class="text-center space-y-1">
-                    <span class="text-3xl">🔒</span>
-                    <h3 class="text-xl font-serif font-bold text-white">Acceso al Panel de Control</h3>
-                    <p class="text-xs text-slate-400">Ingrese su PIN de Acceso o Contraseña Maestra.</p>
-                    <p class="text-xs text-amber-200">Panel demostrativo: no cuenta con autenticación segura ni protección de datos. No ingreses contraseñas reales ni información confidencial.</p>
-                </div>
-                <div class="bg-navy-950 p-6 rounded-2xl border border-slate-800 space-y-3 max-w-sm mx-auto text-xs">
-                    <label class="block text-slate-300 font-semibold">Usuario / Correo</label>
-                    <input type="text" id="adm_user" value="dacaen99@gmail.com" class="lex-input">
-                    <label class="block text-slate-300 font-semibold">Contraseña o PIN de Acceso</label>
-                    <input type="password" id="adm_pass" placeholder="PIN (ej. 951940)" class="lex-input text-center font-bold tracking-widest text-gold-400" onkeydown="if(event.key==='Enter') autenticarAdmin();">
-                    <div id="adm_error_msg" class="hidden text-red-400 text-center font-semibold"></div>
-                    <button type="button" class="btn btn-gold w-full justify-center py-3 shadow-lg" onclick="autenticarAdmin()">🔓 Ingresar al Panel</button>
-                    <div class="text-[10px] text-slate-500 text-center pt-1">PIN autorizado: <strong>951940</strong> o Cédula <strong>14971373</strong></div>
-                </div>
-            </div>
-            <div id="adminDashboard" class="hidden space-y-4 text-xs">
-                <div class="flex justify-between items-center bg-navy-950 p-3 rounded-lg border border-gold-500">
-                    <span class="text-gold-400 font-bold">¡Bienvenido, Lic. Daniel Carrasco Enríquez! (Céd. 14971373)</span>
-                    <button class="btn btn-outline text-xs py-1 px-3" onclick="cerrarSesionAdmin()">Cerrar Sesión</button>
-                </div>
-                <div class="bg-navy-950 p-5 rounded-xl border border-slate-800 space-y-2">
-                    <h4 class="font-bold text-white text-sm">🛠️ Consola de Control LexControl</h4>
-                    <p class="text-slate-300">Sincronizado con SISE (CARRASCO99). Almacenamiento seguro activo.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- FOOTER -->
-    <footer class="bg-navy-950 border-t border-navy-800 text-slate-500 text-xs py-8 px-4 text-center space-y-2">
+    <footer class="bg-navy-950 border-t border-navy-800 text-slate-400 text-xs py-8 px-4 text-center space-y-2">
         <p class="text-slate-400 font-serif font-bold text-sm">LEGAL TECH OAXACA · FIRMA LEGAL DIGITAL</p>
         <p>Director General: Lic. Daniel Carrasco Enríquez (Céd. Prof. 14971373) · SISE: CARRASCO99</p>
         <p>Henequén 41, La Magueyera, 68276 Oaxaca de Juárez / Villa de Etla, Oax. · Tel: +52 951 940 8062 · dacaen99@gmail.com</p>
-        <p class="text-[11px] text-slate-600">&copy; 2026 www.legaltechoaxacacorporativojuridico.com. Secreto profesional y protección fiduciaria conforme a la ley.</p>
+        <p class="text-[11px] text-slate-400">&copy; 2026 www.legaltechoaxacacorporativojuridico.com. Secreto profesional y protección fiduciaria conforme a la ley.</p>
     </footer>
 
     <!-- TOAST -->
@@ -621,8 +580,8 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openAdminModal() { document.getElementById('modalAdmin').style.display = 'flex'; }
-        function closeModal(id) { document.getElementById('modalAdmin').style.display = 'none'; }
+
+
 
         function mostrarToast(msg) {
             const t = document.getElementById('ltCustomToast');
@@ -632,26 +591,9 @@
             setTimeout(() => t.style.display = 'none', 3200);
         }
 
-        function autenticarAdmin() {
-            const p = document.getElementById('adm_pass').value.trim();
-            if (p === '951940' || p === '14971373' || p === '951D303eres.9999' || p === 'legaltech2026' || p === '') {
-                document.getElementById('adminLoginForm').classList.add('hidden');
-                document.getElementById('adminDashboard').classList.remove('hidden');
-                mostrarToast("🔓 Acceso autorizado como Director General.");
-            } else {
-                const err = document.getElementById('adm_error_msg');
-                if(err) {
-                    err.textContent = "⚠️ PIN o contraseña incorrectos.";
-                    err.classList.remove('hidden');
-                }
-            }
-        }
 
-        function cerrarSesionAdmin() {
-            document.getElementById('adminDashboard').classList.add('hidden');
-            document.getElementById('adminLoginForm').classList.remove('hidden');
-            closeModal('modalAdmin');
-        }
+
+
 
         // 12 Especialidades en Tarjetas
         const listaMaterias = [
@@ -974,7 +916,7 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
                 <button type="button" class="w-full text-left p-3 bg-navy-950 border border-slate-800 hover:border-gold-500 rounded-xl cursor-pointer transition space-y-1" onclick="selectScjnVideo(${i})">
                     <div class="flex justify-between text-[10px]">
                         <span class="px-1.5 py-0.5 rounded font-bold ${i === 0 ? 'bg-red-700 text-white' : 'bg-slate-800 text-slate-300'}">${v.badge}</span>
-                        <span class="text-slate-500">SCJN Oficial</span>
+                        <span class="text-slate-400">SCJN Oficial</span>
                     </div>
                     <div class="text-xs font-bold text-white line-clamp-2">${v.title}</div>
                 </button>
@@ -992,26 +934,8 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
         }
 
         // LEXCONTROL
-        let lexDB = JSON.parse(localStorage.getItem('LEX_DB') || '[{"id":"1","numero":"1152/2026","materia":"Amparo","cliente":"YONATAN ÁLVAREZ","acto":"Orden de arresto"}]');
-        function lexInit() {
-            const lista = document.getElementById('lexListaExpedientes');
-            if(!lista) return;
-            lista.innerHTML = "";
-            lexDB.forEach(x => {
-                const div = document.createElement('div');
-                div.className = "p-3 bg-navy-900 border border-slate-800 rounded-xl cursor-pointer text-xs text-gold-400 font-bold hover:border-gold-500 transition";
-                div.innerHTML = `Exp: ${x.numero} · ${x.cliente}`;
-                div.onclick = () => { document.getElementById('lexFieldExpediente').value = x.numero; document.getElementById('lexFieldCliente').value = x.cliente; document.getElementById('lexFieldActo').value = x.acto; };
-                lista.appendChild(div);
-            });
-        }
-        function lexGuardarExpedienteActual() { mostrarToast("✅ Expediente actualizado en almacenamiento local."); }
-        function lexNuevoExpediente() {
-            document.getElementById('lexFieldExpediente').value = "1153/2026";
-            document.getElementById('lexFieldCliente').value = "NUEVO CLIENTE";
-            document.getElementById('lexFieldActo').value = "Revisión de medida cautelar.";
-            mostrarToast("➕ Nuevo asunto configurado.");
-        }
+
+
 
         function registrarCitaPro() {
             const fields = {

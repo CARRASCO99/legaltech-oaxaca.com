@@ -1,4 +1,4 @@
-const CACHE_NAME = 'legaltech-oaxaca-shell-v2';
+const CACHE_NAME = 'legaltech-oaxaca-shell-v3';
 
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -31,6 +31,12 @@ self.addEventListener('fetch', event => {
         if (cacheable) {
             event.respondWith(caches.open(CACHE_NAME).then(async cache => (await cache.match(request)) || fetch(request)));
         }
+        return;
+    }
+
+    const publicPages = ['./', './index.html', './legaltech_oaxaca.html']
+        .map(path => new URL(path, self.registration.scope).href);
+    if (!publicPages.includes(url.href)) {
         return;
     }
 
