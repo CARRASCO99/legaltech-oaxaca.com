@@ -10,6 +10,7 @@ test('public pages remove simulated access and exposed LexControl records', () =
     assert.equal(mirror, html);
     assert.doesNotMatch(html, /Acceso al Panel de Control|PIN autorizado|modalAdmin|adminLoginForm/);
     assert.doesNotMatch(html, /autenticarAdmin|adminDashboard|adm_pass|lexDB|lexNuevoExpediente/);
+    assert.doesNotMatch(html, /\blexInit\b/);
     assert.doesNotMatch(html, /<input\b[^>]*type=["']password/i);
     assert.doesNotMatch(html, /id="lexField(?:Expediente|Cliente|Acto)"/);
     assert.match(html, /Demostración no operativa: no existe almacenamiento protegido de expedientes/);
