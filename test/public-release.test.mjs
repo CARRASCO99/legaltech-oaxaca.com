@@ -36,6 +36,7 @@ test('public improvements use the supplied emblem and link to official sources',
     assert.match(html, /Directorio de fuentes jurídicas/);
     assert.match(html, /https:\/\/www\.dof\.gob\.mx\//);
     assert.match(html, /Esta pantalla es una demostración/);
+    assert.match(html, /Este sitio no consulta ni monitorea acuerdos automáticamente/);
     const emblem = await readFile(new URL('../icons/emblema-legaltech.svg', import.meta.url), 'utf8');
     assert.match(emblem, /<svg\b/);
     assert.doesNotMatch(emblem, /<script\b|<image\b/i);
@@ -50,6 +51,19 @@ test('search metadata identifies the public organization without an unverified a
     assert.equal(organization.telephone, '+52-951-940-8062');
     assert.equal(organization.address, undefined);
     assert.match(html, /property="og:image"/);
+});
+
+test('search guides are linked, canonical and present in the sitemap', async () => {
+    const sitemap = await readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
+    for (const page of ['amparo-oaxaca.html', 'derecho-militar-oaxaca.html']) {
+        const content = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+        const url = `https://www.legaltechoaxacacorporativojuridico.com/${page}`;
+        assert.ok(html.includes(`href="${page}"`));
+        assert.ok(content.includes(`rel="canonical" href="${url}"`));
+        assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+        assert.match(content, /href="\.\/"/);
+        assert.match(content, /(?:no|ni) garantiza un resultado/i);
+    }
 });
 
 test('public page restores zoom, readable text, accessible controls, and valid icons', async () => {

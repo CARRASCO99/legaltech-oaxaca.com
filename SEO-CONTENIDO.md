@@ -18,6 +18,10 @@ Este brief sirve para redactar y revisar contenido del sitio. No es una instrucc
 
 No crear páginas de ubicación o especialidad solo para repetir estas frases. Publicar una página temática requiere contenido original, útil y revisión profesional.
 
+Las guías de amparo y derecho militar ofrecen orientación general y enlazan a
+la consulta. Deben revisarse profesionalmente y actualizarse cuando cambien
+los servicios; su publicación no garantiza indexación ni una posición.
+
 ## Hechos comprobados en el sitio
 
 - Dominio canónico indicado por `CNAME` y accesible por HTTPS: `https://www.legaltechoaxacacorporativojuridico.com/`.

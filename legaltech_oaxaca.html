@@ -107,18 +107,18 @@
                 <span class="text-slate-300 hidden sm:inline">Atención Inmediata en Detenciones, FGR, Cateos y Fuero Militar</span>
             </div>
             <div class="flex items-center space-x-4 text-slate-300">
-                <a href="https://www.buholegal.com/" target="_blank" class="hover:text-gold-400">🎓 Céd. Prof. 14971373</a>
-                <span class="text-slate-400">|</span>
+                <a href="https://www.buholegal.com/" target="_blank" class="hidden sm:inline hover:text-gold-400">🎓 Céd. Prof. 14971373</a>
+                <span class="hidden sm:inline text-slate-400">|</span>
                 <a href="tel:+529519408062" class="hover:text-gold-400 font-semibold">📞 951 940 8062</a>
-                <span class="text-slate-400">|</span>
-                <span class="bg-navy-800 px-2.5 py-0.5 rounded border border-slate-700 text-gold-400 font-bold">SISE: CARRASCO99</span>
+                <span class="hidden sm:inline text-slate-400">|</span>
+                <span class="hidden sm:inline bg-navy-800 px-2.5 py-0.5 rounded border border-slate-700 text-gold-400 font-bold">SISE: CARRASCO99</span>
             </div>
         </div>
     </div>
 
     <!-- NAVEGADOR PRINCIPAL FLUIDO -->
-    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+    <header class="relative lg:sticky lg:top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="switchView('home')">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-500 to-navy-900 flex items-center justify-center p-0.5 shadow-lg">
                     <div class="w-full h-full bg-navy-900 rounded-[10px] flex items-center justify-center">
@@ -151,7 +151,7 @@
                 <button class="nav-btn-planes px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('planes')">Acceso y planes</button>
             </nav>
 
-            <div class="flex items-center space-x-2 shrink-0">
+            <div class="hidden lg:flex items-center space-x-2 shrink-0">
                 <button type="button" class="btn btn-outline text-xs py-2 px-3 border-gold-500/40 text-gold-400" onclick="window.LexCore.toggleVoz()">🎙️ Voz</button>
                 <button onclick="switchView('agendar')" class="btn btn-gold text-xs py-2 px-4 shadow-md">📅 Agendar Cita</button>
             </div>
@@ -172,8 +172,10 @@
                     <button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Cotizador</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('portal')">Estado del portal</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('planes')">Acceso y planes</button>
+                    <button type="button" class="btn btn-outline text-xs" onclick="window.LexCore.toggleVoz()">🎙️ Voz</button>
                 </nav>
             </details>
+            <button type="button" class="btn btn-gold text-xs lg:hidden" onclick="switchView('agendar')">📅 Cita</button>
             <button type="button" id="installAppButton" class="btn btn-outline text-xs border-gold-500/40 text-gold-400" aria-controls="installAppHelp" aria-expanded="false">📲 Instalar app</button>
             <a class="text-xs text-slate-200 hover:text-gold-400 underline underline-offset-4" href="https://legaltech-oaxaca-private-portal.legaltech-oaxaca-chat.workers.dev/">Acceso privado</a>
             <p id="installAppHelp" class="hidden text-xs text-slate-300" role="status"></p>
@@ -185,10 +187,10 @@
 
         <!-- VIEW 1: HOME -->
         <section id="view-home" class="space-y-12 block">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-3 sm:py-8">
                 <div class="lg:col-span-7 space-y-6">
                     <span class="inline-block px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase">Director General: Lic. Daniel Carrasco Enríquez · Céd. Prof. 14971373</span>
-                    <h1 class="text-4xl sm:text-6xl font-serif font-bold text-white leading-tight">
+                    <h1 class="text-3xl sm:text-6xl font-serif font-bold text-white leading-tight">
                         Defensa Técnica en <span class="gold-gradient">Juicio de Amparo</span>, Fuero Militar & Justicia Digital
                     </h1>
                     <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
@@ -233,6 +235,15 @@
                     <div class="practice-card gap-3"><h3 class="font-bold text-white">Express y contratos</h3><p class="text-sm text-slate-300">Express abre una solicitud por WhatsApp. La pantalla de contratos es una demostración y no genera documentos.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('express')">Ver Express</button><button class="btn btn-outline text-xs" onclick="switchView('contratos')">Ver contratos</button></div></div>
                     <div class="practice-card gap-3"><h3 class="font-bold text-white">LexControl y honorarios</h3><p class="text-sm text-slate-300">LexControl es una demostración sin expedientes protegidos. El cotizador muestra un rango fijo, no una cotización personalizada.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('gestion')">Ver demostración</button><button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Ver rango</button></div></div>
                     <div class="practice-card gap-3"><h3 class="font-bold text-white">Ideas y acceso privado</h3><p class="text-sm text-slate-300">El asistente de ideas está en preparación; su respuesta en producción aún no está confirmada. El acceso del propietario está separado y presenta un error.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('ideas')">Ver asistente</button><button class="btn btn-outline text-xs" onclick="switchView('portal')">Conocer estado</button></div></div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 space-y-3">
+                <h2 class="text-2xl font-serif font-bold text-white">Guías de orientación jurídica</h2>
+                <p class="text-sm text-slate-300">Información general para preparar una consulta; la revisión depende de cada caso.</p>
+                <div class="flex flex-wrap gap-3">
+                    <a class="btn btn-outline text-sm" href="amparo-oaxaca.html">Asesoría sobre amparo en Oaxaca</a>
+                    <a class="btn btn-outline text-sm" href="derecho-militar-oaxaca.html">Asesoría en derecho militar</a>
                 </div>
             </div>
 
@@ -691,6 +702,9 @@
 <h2 class="text-xl font-bold text-white">Gestión de expedientes</h2>
 <p class="mt-3 text-slate-300">Demostración no operativa: no existe almacenamiento protegido de expedientes.</p>
 <p class="mt-2 text-slate-300">No ingreses información confidencial. Este sitio público no guarda ni transmite expedientes.</p>
+<h3 class="mt-5 font-bold text-white">Consulta de acuerdos</h3>
+<p class="mt-2 text-slate-300">Para una consulta directa, identifica la entidad, el juzgado y el expediente, y verifica los acuerdos en el portal judicial correspondiente. Este sitio no consulta ni monitorea acuerdos automáticamente.</p>
+<a class="btn btn-outline mt-4" href="https://www.serviciosenlinea.pjf.gob.mx/" target="_blank" rel="noopener noreferrer">Abrir servicios en línea del PJF ↗</a>
 </div>
 </section>
 </main>
