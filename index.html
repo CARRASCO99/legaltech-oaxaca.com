@@ -12,10 +12,21 @@
     <meta name="description" content="Firma Legal Digital en Oaxaca de Juárez. Juicio de amparo indirecto, derecho militar, consejos de honor, carpetas FGR/FGEO y gestión procesal. Lic. Daniel Carrasco Enríquez. Céd. Prof. 14971373.">
     <meta name="keywords" content="abogado oaxaca, amparo indirecto oaxaca, derecho militar oaxaca, legal tech oaxaca, daniel carrasco enriquez, corporativo juridico oaxaca">
     <meta name="author" content="Lic. Daniel Carrasco Enríquez">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="Legal Tech Oaxaca | Firma Legal Digital">
+    <meta property="og:description" content="Asesoría jurídica en Oaxaca: amparo, derecho militar y otras especialidades.">
+    <meta property="og:url" content="https://www.legaltechoaxacacorporativojuridico.com/">
+    <meta property="og:image" content="https://www.legaltechoaxacacorporativojuridico.com/icons/legaltech-512.png">
+    <meta name="twitter:card" content="summary">
     <meta name="legal-chat-endpoint" content="https://legaltech-oaxaca-chat.legaltech-oaxaca-chat.workers.dev/api/chat">
+    <meta name="public-content-endpoint" content="">
     <link rel="canonical" href="https://www.legaltechoaxacacorporativojuridico.com">
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#040913">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"Legal Tech Oaxaca","url":"https://www.legaltechoaxacacorporativojuridico.com/","telephone":"+52-951-940-8062","areaServed":{"@type":"AdministrativeArea","name":"Oaxaca"}}
+    </script>
 
     <!-- Tailwind CSS 3.4.17 & Fuentes de Lujo -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -74,6 +85,16 @@
         .tag-admin { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
         .tag-intl { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); }
         .tag-therapy { background: rgba(236, 72, 153, 0.2); color: #fbcfe8; border: 1px solid rgba(236, 72, 153, 0.4); }
+        .hero-emblem { width: 7rem; height: 7rem; }
+        .main-navigation > button { flex-shrink: 0; }
+        @media (prefers-reduced-motion: no-preference) {
+            .hero-emblem { animation: emblem-arrive .7s ease-out both; }
+            @keyframes emblem-arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto !important; }
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
@@ -98,7 +119,7 @@
     <!-- NAVEGADOR PRINCIPAL FLUIDO -->
     <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('home')">
+            <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="switchView('home')">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-500 to-navy-900 flex items-center justify-center p-0.5 shadow-lg">
                     <div class="w-full h-full bg-navy-900 rounded-[10px] flex items-center justify-center">
                         <span class="text-gold-400 font-serif font-bold text-xl">LT</span>
@@ -110,7 +131,7 @@
                 </div>
             </div>
 
-            <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+            <nav aria-label="Navegación principal" class="main-navigation hidden lg:flex flex-1 min-w-0 overflow-x-auto whitespace-nowrap items-center space-x-1 text-sm font-medium">
                 <button class="nav-btn-home px-3 py-2 rounded-lg text-white font-bold transition" onclick="switchView('home')">Inicio</button>
                 <button class="nav-btn-materias px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('materias')">12 Materias</button>
                 <button class="nav-btn-jurisprudencia px-3 py-2 rounded-lg text-gold-400 hover:text-white hover:bg-navy-800 transition font-bold flex items-center gap-1" onclick="switchView('jurisprudencia')">
@@ -121,14 +142,16 @@
                     <span>🎬</span> Videoteca SCJN
                 </button>
                 <button class="nav-btn-ai px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('ai')">LegalTech AI</button>
+                <button class="nav-btn-ideas px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('ideas')">Ideas IA</button>
                 <button class="nav-btn-express px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('express')">⚡ Express</button>
                 <button class="nav-btn-contratos px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('contratos')">📝 Contratos</button>
                 <button class="nav-btn-gestion px-3 py-2 rounded-lg text-gold-400 bg-navy-800 border border-gold-500/30 transition" onclick="switchView('gestion')">📁 LexControl</button>
                 <button class="nav-btn-cotizador px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('cotizador')">📊 Cotizador</button>
-                <button class="px-3 py-2 rounded-lg text-amber-300 bg-amber-500/20 border border-amber-500/40 font-bold" disable aria-label="Panel privado temporalmente deshabilitado; no captures credenciales aquí">Panel privado temporalmente deshabilitado</button>
+                <button class="nav-btn-portal px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('portal')">Estado del portal</button>
+                <button class="nav-btn-planes px-3 py-2 rounded-lg text-slate-200 hover:text-gold-400 hover:bg-navy-800 transition" onclick="switchView('planes')">Acceso y planes</button>
             </nav>
 
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 shrink-0">
                 <button type="button" class="btn btn-outline text-xs py-2 px-3 border-gold-500/40 text-gold-400" onclick="window.LexCore.toggleVoz()">🎙️ Voz</button>
                 <button onclick="switchView('agendar')" class="btn btn-gold text-xs py-2 px-4 shadow-md">📅 Agendar Cita</button>
             </div>
@@ -142,15 +165,17 @@
                     <button class="btn btn-outline text-xs" onclick="switchView('jurisprudencia')">Jurisprudencias SJF</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('videoteca')">Videoteca SCJN</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('ai')">LegalTech AI</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('ideas')">Asistente de ideas</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('express')">Express</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('contratos')">Contratos</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('gestion')">LexControl</button>
                     <button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Cotizador</button>
-                    <button class="btn btn-outline text-xs" disable aria-label="Panel privado temporalmente deshabilitado; no captures credenciales aquí">Panel privado temporalmente deshabilitado</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('portal')">Estado del portal</button>
+                    <button class="btn btn-outline text-xs" onclick="switchView('planes')">Acceso y planes</button>
                 </nav>
             </details>
-            <a href="https://legaltech-oaxaca-private-portal.legaltech-oaxaca-chat.workers.dev/" class="btn btn-outline text-xs border-gold-500/40 text-gold-400">Acceso privado</a>
             <button type="button" id="installAppButton" class="btn btn-outline text-xs border-gold-500/40 text-gold-400" aria-controls="installAppHelp" aria-expanded="false">📲 Instalar app</button>
+            <a class="text-xs text-slate-200 hover:text-gold-400 underline underline-offset-4" href="https://legaltech-oaxaca-private-portal.legaltech-oaxaca-chat.workers.dev/">Acceso privado</a>
             <p id="installAppHelp" class="hidden text-xs text-slate-300" role="status"></p>
         </div>
     </header>
@@ -170,16 +195,18 @@
                         Firma Legal Digital en Oaxaca de Juárez. Litigio constitucional, amparo indirecto, derecho militar, carpetas de investigación FGR/FGEO y gestión procesal avanzada.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <button onclick="switchView('ai')" class="btn btn-gold text-sm shadow-xl">🤖 Redactor IA Dogmático</button>
+                        <button onclick="switchView('ai')" class="btn btn-gold text-sm shadow-xl">🤖 Chat y herramientas legales</button>
+                        <button onclick="switchView('ideas')" class="btn btn-outline text-sm">💡 Asistente de ideas</button>
                         <button onclick="switchView('materias')" class="btn btn-outline text-sm">⚖️ Ver 12 Especialidades</button>
                         <button onclick="switchView('jurisprudencia')" class="btn btn-outline text-sm border-gold-500/50 text-gold-400">🏛️ Consultar tesis SJF</button>
                         <button onclick="switchView('videoteca')" class="btn btn-outline text-sm border-rose-600/50 text-rose-300">🎬 Videoteca SCJN</button>
+                        <button onclick="switchView('portal')" class="btn btn-outline text-sm">Estado del portal</button>
                         <a href="https://wa.me/529519408062?text=Hola%20Lic.%20Daniel%20Carrasco%2C%20requiero%20asesoría%20jurídica%20urgente" target="_blank" class="btn btn-whatsapp text-sm">💬 WhatsApp Despacho</a>
                     </div>
                 </div>
                 <div class="lg:col-span-5 bg-navy-900 p-8 rounded-2xl border border-slate-800 text-center space-y-4 shadow-2xl">
-                    <div class="w-16 h-16 bg-gold-500/20 border border-gold-500/50 rounded-2xl mx-auto flex items-center justify-center text-3xl">⚖️</div>
-                    <h2 class="font-serif font-bold text-xl text-white">LEGAL TECH OAXACA</h2>
+                    <img class="hero-emblem mx-auto" src="icons/emblema-legaltech.svg" alt="" width="112" height="112">
+                    <p class="font-serif font-bold text-xl text-white">LEGAL TECH OAXACA</p>
                     <p class="text-xs text-slate-400">Corporativo Jurídico & Litigio de Alto Impacto</p>
                     <div class="pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-xs text-slate-300">
                         <div class="bg-navy-950 p-2.5 rounded-xl border border-slate-800"><strong>PJF SISE</strong><br><span class="text-gold-400 font-mono">CARRASCO99</span></div>
@@ -188,6 +215,24 @@
                     <div class="pt-2 text-[11px] text-slate-400 border-t border-slate-800/60">
                         Sede: Henequén 41, La Magueyera, Oaxaca de Juárez / Villa de Etla, Oax.
                     </div>
+                </div>
+            </div>
+
+            <section id="publicContent" class="border-t border-slate-800 pt-8 space-y-4" hidden aria-labelledby="publicContentTitle">
+                <h2 id="publicContentTitle" class="text-2xl font-serif font-bold text-white">Contenido publicado</h2>
+                <div id="publicContentBlocks" class="space-y-4"></div>
+            </section>
+
+            <div class="border-t border-slate-800 pt-8 space-y-4">
+                <h2 class="text-2xl font-serif font-bold text-white">Servicios y herramientas públicas</h2>
+                <p class="text-slate-300 text-sm">Consulta la oferta del despacho y conoce qué hace cada ventana. Ninguna de estas pantallas es un expediente privado.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">Asesoría y especialidades</h3><p class="text-sm text-slate-300">Conoce las materias y solicita atención por WhatsApp; la cita requiere confirmación.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('materias')">Ver materias</button><button class="btn btn-outline text-xs" onclick="switchView('agendar')">Solicitar cita</button></div></div>
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">Chat y redactor</h3><p class="text-sm text-slate-300">Chat para preguntas generales; el redactor usa una plantilla y las otras herramientas son demostraciones. No compartas datos confidenciales.</p><button class="btn btn-outline text-xs" onclick="switchView('ai')">Abrir herramientas</button></div>
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">Fuentes y videoteca</h3><p class="text-sm text-slate-300">Selección local de tesis para verificar en el SJF y videos sujetos a disponibilidad externa.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('jurisprudencia')">Ver tesis</button><button class="btn btn-outline text-xs" onclick="switchView('videoteca')">Ver videos</button></div></div>
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">Express y contratos</h3><p class="text-sm text-slate-300">Express abre una solicitud por WhatsApp. La pantalla de contratos es una demostración y no genera documentos.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('express')">Ver Express</button><button class="btn btn-outline text-xs" onclick="switchView('contratos')">Ver contratos</button></div></div>
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">LexControl y honorarios</h3><p class="text-sm text-slate-300">LexControl es una demostración sin expedientes protegidos. El cotizador muestra un rango fijo, no una cotización personalizada.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('gestion')">Ver demostración</button><button class="btn btn-outline text-xs" onclick="switchView('cotizador')">Ver rango</button></div></div>
+                    <div class="practice-card gap-3"><h3 class="font-bold text-white">Ideas y acceso privado</h3><p class="text-sm text-slate-300">El asistente de ideas está en preparación; su respuesta en producción aún no está confirmada. El acceso del propietario está separado y presenta un error.</p><div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('ideas')">Ver asistente</button><button class="btn btn-outline text-xs" onclick="switchView('portal')">Conocer estado</button></div></div>
                 </div>
             </div>
 
@@ -229,6 +274,102 @@
             </div>
         </section>
 
+        <section id="view-portal" class="space-y-6 hidden max-w-5xl mx-auto">
+            <header class="space-y-3">
+                <span class="card-tag tag-const">Estado público · sin datos privados</span>
+                <h2 class="text-3xl font-serif font-bold text-white">Portal privado del propietario</h2>
+                <p class="text-slate-300">Esta vista es informativa y pública. El acceso del propietario está separado y protegido por Cloudflare Access con MFA, pero actualmente presenta un error 503. El panel privado no está disponible para administrar expedientes, usuarios, planes ni pagos. No ingreses información confidencial aquí.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="practice-card gap-3"><h3 class="font-bold text-white">Propietario · acceso protegido</h3><p class="text-sm text-slate-300">El acceso se valida por separado en Cloudflare Access. Esta página pública no muestra información privada ni ofrece controles administrativos.</p></div>
+                <div class="practice-card gap-3"><h3 class="font-bold text-white">Otros usuarios · no habilitados</h3><p class="text-sm text-slate-300">Los roles adicionales y sus permisos siguen por definir. No hay cuentas de usuario ni acceso habilitado para terceros.</p></div>
+            </div>
+            <div class="bg-navy-900 border border-slate-800 rounded-2xl p-6 space-y-3">
+                <h3 class="font-bold text-white">Estado funcional y pendientes</h3>
+                <p class="text-sm text-slate-300">El acceso al Worker privado presenta un error 503. El almacenamiento privado, los expedientes, la gestión de usuarios, los pagos y las suscripciones no están operativos; tampoco hay integración automática con PJF.</p>
+                <p class="text-sm text-slate-300">El asistente de ideas está en preparación y no edita ni publica código. Puedes explorar los servicios públicos o contactar al despacho; no envíes datos confidenciales por el formulario.</p>
+                <div class="flex flex-wrap gap-2"><button class="btn btn-outline text-xs" onclick="switchView('home')">Servicios públicos</button><button class="btn btn-outline text-xs" onclick="switchView('planes')">Acceso y planes</button><button class="btn btn-gold text-xs" onclick="switchView('agendar')">Solicitar asesoría</button></div>
+            </div>
+        </section>
+
+        <section id="view-planes" class="space-y-6 hidden max-w-5xl mx-auto">
+            <header class="space-y-3">
+                <span class="card-tag tag-const">Información pública · sin compras</span>
+                <h2 class="text-3xl font-serif font-bold text-white">Acceso, roles y planes propuestos</h2>
+                <p class="text-slate-300">Esta es información, no un registro ni una oferta de cobro. No hay inicio de sesión ni suscripciones activas desde este sitio.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Rol administrador</h3>
+                    <p class="text-sm text-slate-300">El rol de administrador es independiente del plan. El acceso del propietario presenta un error; no hay controles administrativos operativos ni permiso de “control total”.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Usuarios y permisos</h3>
+                    <p class="text-sm text-slate-300">Otros usuarios tendrán el rol mínimo hasta definir y programar permisos concretos en el servidor. No hay funciones privadas habilitadas.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Principiante</h3>
+                    <p class="text-sm text-slate-300">Periodicidad propuesta: semanal. Precio, funciones y suscripción no configurados.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Starter</h3>
+                    <p class="text-sm text-slate-300">Periodicidad propuesta: mensual. Precio, funciones y suscripción no configurados.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Premium</h3>
+                    <p class="text-sm text-slate-300">Periodicidad propuesta: anual. Precio, funciones y suscripción no configurados.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Pagos</h3>
+                    <p class="text-sm text-slate-300">No hay proveedor, métodos de pago, Checkout ni webhooks conectados. Esta página no cobra ni confirma pagos.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Inicio de sesión</h3>
+                    <p class="text-sm text-slate-300">GitHub Pages sirve archivos estáticos y no ejecuta sesiones PHP. El portal está protegido por Cloudflare Access, pero su acceso presenta un error 503 pendiente de resolver.</p>
+                </article>
+                <article class="practice-card gap-3">
+                    <h3 class="font-bold text-white">Google, Facebook e Instagram</h3>
+                    <p class="text-sm text-slate-300">Google y Gmail son el mismo proveedor; no está configurado. Facebook Login e Instagram Login requieren aplicaciones y credenciales OAuth propias; tampoco están conectados.</p>
+                </article>
+            </div>
+            <p class="text-sm text-amber-200">Para habilitarlo hacen falta MFA verificado, política de acceso, proveedor(es) elegidos, configuración protegida de credenciales, reglas de roles, precios aprobados y un proveedor de pagos con webhooks firmados y almacenamiento de suscripciones. No ingreses contraseñas ni datos de pago en el sitio.</p>
+            <button class="btn btn-outline text-sm" onclick="switchView('home')">Volver a servicios públicos</button>
+        </section>
+
+        <section id="view-ideas" class="space-y-6 hidden max-w-4xl mx-auto">
+            <header class="space-y-2">
+                <span class="card-tag tag-const">Herramienta pública</span>
+                <h2 id="siteAssistantTitle" class="text-3xl font-serif font-bold text-white">Asistente de ideas y mejoras</h2>
+                <p class="text-slate-300 text-sm">Herramienta en preparación: puedes intentar solicitar una propuesta de contenido o interfaz, pero su respuesta en producción aún no está confirmada. No edita archivos, modifica código ni publica el sitio.</p>
+                <p class="text-amber-200 text-sm">No compartas datos personales, expedientes ni documentos confidenciales. La propuesta se envía a un servicio externo y debe revisarse, especialmente si contiene afirmaciones jurídicas.</p>
+            </header>
+            <div class="bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-4">
+                <div class="flex flex-wrap justify-between items-center gap-3">
+                    <p id="siteAssistantStatus" class="text-xs text-amber-300" role="status">Describe una mejora para recibir una propuesta revisable.</p>
+                    <button id="siteAssistantClearButton" type="button" class="btn btn-outline text-xs" onclick="limpiarAsistenteSitio()">Limpiar asistente</button>
+                </div>
+                <div id="siteAssistantMessages" class="bg-navy-950 border border-slate-800 rounded-xl p-4 space-y-3 max-h-80 overflow-y-auto" role="log" aria-live="polite" aria-relevant="additions text">
+                    <p class="text-sm text-slate-300">Cuéntame qué texto, sección o experiencia te gustaría mejorar. Puedo proponer un borrador o una especificación para revisión.</p>
+                </div>
+                <p id="siteAssistantError" class="text-sm text-red-300" role="alert"></p>
+                <form id="siteAssistantForm" class="flex flex-col sm:flex-row gap-3" onsubmit="enviarIdeaAsistenteSitio(event)">
+                    <label class="sr-only" for="siteAssistantInput">Describe una idea de mejora para el sitio</label>
+                    <textarea id="siteAssistantInput" class="lex-textarea flex-1" rows="2" maxlength="4000" placeholder="Ejemplo: propón una sección de preguntas frecuentes" required></textarea>
+                    <button id="siteAssistantSendButton" type="submit" class="btn btn-gold justify-center">Proponer</button>
+                </form>
+                <section id="siteProposalReview" class="hidden space-y-3 rounded-xl border border-gold-500/40 bg-navy-950 p-4" aria-labelledby="siteProposalTitle">
+                    <h3 id="siteProposalTitle" class="font-bold text-gold-300">Propuesta para revisar</h3>
+                    <pre id="siteProposalPreview" class="whitespace-pre-wrap break-words text-sm text-slate-200 font-sans"></pre>
+                    <button id="siteProposalApprove" type="button" class="btn btn-gold text-sm" onclick="aprobarPropuestaSitio()">Aprobar borrador de vista previa</button>
+                </section>
+                <section id="siteApprovedDraftPanel" class="hidden space-y-2 rounded-xl border border-emerald-500/40 bg-emerald-950/20 p-4" aria-labelledby="siteApprovedDraftTitle">
+                    <h3 id="siteApprovedDraftTitle" class="font-bold text-emerald-200">Borrador aprobado · solo vista previa local</h3>
+                    <pre id="siteApprovedDraft" class="whitespace-pre-wrap break-words text-sm text-slate-200 font-sans"></pre>
+                    <p class="text-xs text-slate-300">No se guarda en el servidor ni se incorpora al sitio. Al limpiar o cerrar la página se descarta.</p>
+                </section>
+            </div>
+        </section>
+
         <!-- VIEW 2: 12 MATERIAS -->
         <section id="view-materias" class="space-y-8 hidden">
             <div class="bg-gradient-to-r from-red-950/60 via-navy-900 to-navy-900 border-2 border-red-700 rounded-2xl p-8 shadow-xl">
@@ -261,15 +402,15 @@
             <!-- BUSCADOR Y FILTROS -->
             <p class="bg-amber-950/40 border border-amber-700 rounded-xl p-4 text-sm text-amber-200">Los registros de esta página son una selección local, no una consulta en vivo. Verifica cada tesis, su vigencia y su aplicación en el Semanario Judicial oficial antes de usarla.</p>
             <div class="bg-navy-900 p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-3">
-                <input type="text" id="tesisSearchInp" placeholder="Buscar por Registro Digital, Rubro o Materia (Amparo, Clausura, Penal, Militar)..." class="lex-input flex-1" oninput="filtrarTesis()" aria-label="Buscar tesis y precedentes">
-                <select id="tesisMatFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar por materia">
+                <input type="text" id="tesisSearchInp" placeholder="Buscar por Registro Digital, Rubro o Materia (Amparo, Clausura, Penal, Militar)..." class="lex-input flex-1" oninput="filtrarTesis()" aria-label="Buscar jurisprudencia">
+                <select id="tesisMatFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar jurisprudencia por materia">
                     <option value="todas">Todas las Materias</option>
                     <option value="Común">Común / Amparo</option>
                     <option value="Administrativa">Administrativa</option>
                     <option value="Penal">Penal / Militar</option>
                     <option value="Civil">Civil / Mercantil</option>
                 </select>
-                <select id="tesisTipoFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar por tipo">
+                <select id="tesisTipoFilter" class="lex-select sm:w-48" onchange="filtrarTesis()" aria-label="Filtrar jurisprudencia por tipo">
                     <option value="todos">Todos los Tipos</option>
                     <option value="Jurisprudencia">Jurisprudencia (Obligatoria)</option>
                     <option value="Aislada">Tesis Aislada</option>
@@ -278,6 +419,17 @@
 
             <!-- CONTENEDOR DE TESIS -->
             <div id="tesisContainerList" class="space-y-4"></div>
+            <div class="bg-navy-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                <h3 class="font-serif font-bold text-white">Directorio de fuentes jurídicas</h3>
+                <p class="text-sm text-slate-300">Abre las fuentes para verificar directamente la información y su vigencia. Los servicios externos pueden requerir una cuenta propia.</p>
+                <div class="flex flex-wrap gap-2">
+                    <a class="btn btn-outline text-xs" href="https://sjf2.scjn.gob.mx/" target="_blank" rel="noopener noreferrer">Semanario Judicial ↗</a>
+                    <a class="btn btn-outline text-xs" href="https://www.dof.gob.mx/" target="_blank" rel="noopener noreferrer">Diario Oficial ↗</a>
+                    <a class="btn btn-outline text-xs" href="https://www.ordenjuridico.gob.mx/" target="_blank" rel="noopener noreferrer">Orden Jurídico Nacional ↗</a>
+                    <a class="btn btn-outline text-xs" href="https://www.serviciosenlinea.pjf.gob.mx/" target="_blank" rel="noopener noreferrer">Servicios en línea del PJF ↗</a>
+                    <a class="btn btn-outline text-xs" href="https://www.tfja.gob.mx/" target="_blank" rel="noopener noreferrer">Tribunal Federal de Justicia Administrativa ↗</a>
+                </div>
+            </div>
             <div class="bg-navy-900 border border-slate-800 rounded-xl p-5 space-y-3">
                 <h3 class="font-serif font-bold text-white">Sesiones y videos de la Suprema Corte</h3>
                 <p class="text-sm text-slate-300">Consulta grabaciones oficiales del Pleno y materiales audiovisuales en la videoteca.</p>
@@ -327,6 +479,7 @@
             <div class="text-center space-y-2">
                 <span class="bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-bold">🧠 Orientación informativa - Verifica las fuentes y plazos con un profesional</span>
                 <h2 class="text-3xl font-serif font-bold text-white">Redactor Procesal & Consultor Constitucional</h2>
+                <p class="text-sm text-amber-200">El redactor usa una plantilla local, no IA. El chat envía preguntas generales a un servicio externo y puede no estar disponible. No ingreses información confidencial.</p>
                 <div class="flex justify-center gap-2 pt-2">
                     <button class="btn btn-gold text-xs py-1.5 px-3" onclick="setAiSubTool('redactor')">Redactor Demostrativo</button>
                     <button class="btn btn-outline text-xs py-1.5 px-3 border-indigo-500 text-indigo-300" onclick="setAiSubTool('pair')">🛡️ Análisis en Par (Red Team)</button>
@@ -337,12 +490,13 @@
             <!-- SUBTOOL 1: REDACTOR PROCESAL ORIGINAL -->
             <div id="aiSubToolRedactor" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div class="lg:col-span-5 bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-4 text-xs">
-                    <label class="block font-bold text-gold-400">Autoridad Responsable</label>
-                    <input type="text" id="inp_ai_p1" class="lex-input" aria-label="Nombre ficticio de la persona" placeholder="Ejemplo ficticio; no uses datos reales">
-                    <label class="block font-bold text-gold-400">Acto Reclamado / Hechos</label>
-                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea" aria-label="Hechos del caso ficticio"></textarea>
-                    <label class="block font-bold text-gold-400">Preceptos Constitucionales y Jurisprudencia</label>
-                    <input type="text" id="inp_ai_p3" class="lex-input" aria-label="Autoridad responsable ficticia" placeholder="Ejemplo ficticio; no uses datos reales">
+                    <p class="text-amber-200" role="note">Modo demostración: este redactor solo genera un borrador local; no guarda ni envía estos campos. No ingreses datos reales ni información de expedientes.</p>
+                    <label class="block font-bold text-gold-400" for="inp_ai_p1">Autoridad Responsable</label>
+                    <input type="text" id="inp_ai_p1" class="lex-input" placeholder="Ejemplo ficticio; no uses datos reales" aria-label="Autoridad responsable">
+                    <label class="block font-bold text-gold-400" for="inp_ai_p2">Acto Reclamado / Hechos</label>
+                    <textarea id="inp_ai_p2" rows="3" class="lex-textarea" placeholder="Ejemplo ficticio; no uses datos reales" aria-label="Acto reclamado o hechos"></textarea>
+                    <label class="block font-bold text-gold-400" for="inp_ai_p3">Preceptos Constitucionales y Jurisprudencia</label>
+                    <input type="text" id="inp_ai_p3" class="lex-input" placeholder="Ejemplo ficticio; no uses datos reales" aria-label="Preceptos constitucionales y jurisprudencia">
                     <button class="btn btn-gold w-full justify-center py-3 text-sm" onclick="generarEscritoIA()">⚡ Redactar Proyecto Jurídico</button>
                 </div>
                 <div class="lg:col-span-7 bg-navy-900 p-6 rounded-2xl border border-slate-800 space-y-3">
@@ -386,7 +540,7 @@
                 <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-3">
                     <div>
                         <h3 id="chatTitle" class="text-xl font-serif font-bold text-white">Chat de orientación legal</h3>
-                        <p id="chatStatus" class="text-xs text-amber-300 mt-1" role="status">Conectado a Cloudflare Workers.</p>
+                        <p id="chatStatus" class="text-xs text-amber-300 mt-1" role="status">Servicio configurado; disponibilidad sujeta a conexión.</p>
                     </div>
                     <button type="button" class="btn btn-outline text-xs py-1 px-3" onclick="limpiarChatLegal()">Limpiar chat</button>
                 </div>
@@ -405,7 +559,7 @@
 
         <!-- VIEW 4: EXPRESS -->
         <section id="view-express" class="space-y-8 hidden">
-            <div class="text-center max-w-2xl mx-auto"><h2 class="text-3xl font-serif font-bold text-white">Soluciones Inmediatas (LegalTech Express)</h2><p class="text-slate-400 text-sm mt-1">Instrumentos legales automatizados respaldados por la firma.</p></div>
+            <div class="text-center max-w-2xl mx-auto"><h2 class="text-3xl font-serif font-bold text-white">Soluciones Inmediatas (LegalTech Express)</h2><p class="text-slate-400 text-sm mt-1">Los botones preparan una solicitud por WhatsApp; no generan ni entregan instrumentos automáticamente.</p></div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="practice-card">
                     <div><span class="card-tag tag-const">Análisis</span><h3 class="font-bold text-white text-lg">Dictamen de Viabilidad</h3><p class="text-xs text-slate-300 mt-2">Evaluación preliminar de plazos fatales y probabilidad de éxito procesal.</p></div>
@@ -426,15 +580,20 @@
         <section id="view-contratos" class="space-y-6 hidden">
             <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">Elaboración Inteligente de Contratos</h2><p class="text-slate-400 text-sm">Instrumentos conformes al Código Civil de Oaxaca.</p></div>
             <p class="text-amber-200 text-sm text-center">Esta pantalla es una demostración: el botón no genera ni guarda un contrato. Solicita su elaboración al despacho.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="practice-card gap-2"><h3 class="font-bold text-white">1. Identificar el acuerdo</h3><p class="text-sm text-slate-300">Define el objeto, las partes y las obligaciones que se desean formalizar.</p></div>
+                <div class="practice-card gap-2"><h3 class="font-bold text-white">2. Revisar las condiciones</h3><p class="text-sm text-slate-300">Considera plazos, pagos, responsabilidades y mecanismos de terminación.</p></div>
+                <div class="practice-card gap-2"><h3 class="font-bold text-white">3. Solicitar revisión</h3><p class="text-sm text-slate-300">El despacho puede revisar y adaptar el documento a las circunstancias del caso.</p></div>
+            </div>
             <div class="bg-navy-900 p-8 rounded-2xl border border-slate-800 max-w-3xl mx-auto space-y-4 text-xs">
-                <label class="block font-bold text-gold-400">Tipo de Contrato</label>
+                <label class="block font-bold text-gold-400" for="ctrTipo">Tipo de Contrato</label>
                 <select id="ctrTipo" class="lex-select" aria-label="Tipo de contrato"><option>Arrendamiento Inmobiliario (Oaxaca)</option><option>Prestación de Servicios Profesionales</option><option>Compraventa con Reserva de Dominio</option></select>
                 <div class="grid grid-cols-2 gap-3">
-                    <input type="text" id="ctrParte1" placeholder="Nombre Arrendador / Otorgante" class="lex-input" aria-label="Primera parte del contrato">
-                    <input type="text" id="ctrParte2" placeholder="Nombre Inquilino / Receptor" class="lex-input" aria-label="Segunda parte del contrato">
+                    <input type="text" id="ctrParte1" placeholder="Nombre Arrendador / Otorgante" class="lex-input" aria-label="Parte contratante 1">
+                    <input type="text" id="ctrParte2" placeholder="Nombre Inquilino / Receptor" class="lex-input" aria-label="Parte contratante 2">
                 </div>
                 <input type="text" id="ctrMonto" placeholder="Monto o Renta mensual (MXN)" class="lex-input" aria-label="Monto del contrato">
-                <button class="btn btn-gold w-full justify-center py-3" onclick="mostrarToast('✅ Contrato generado y listo para revisión.')">⚡ Generar Contrato Blindado</button>
+                <button class="btn btn-gold w-full justify-center py-3" onclick="switchView('agendar')">Solicitar elaboración al despacho</button>
             </div>
         </section>
 
@@ -446,7 +605,7 @@
             <div class="text-center"><h2 class="text-3xl font-serif font-bold text-white">📊 Cotizador de Honorarios</h2></div>
             <div class="bg-navy-900 p-8 rounded-2xl border-2 border-gold-500 space-y-4 text-xs">
                 <div class="flex justify-between items-center"><span class="text-gold-400 font-bold text-sm">Rango Estimado de Litigio</span><strong class="text-xl text-gold-400">$25,000 - $38,000 MXN</strong></div>
-                <p class="text-slate-300 bg-navy-950 p-4 rounded-lg border border-slate-800 leading-relaxed">Evaluación paramétrica basada en la complejidad constitucional y defensa especializada en Oaxaca.</p>
+                <p class="text-slate-300 bg-navy-950 p-4 rounded-lg border border-slate-800 leading-relaxed">Este rango fijo es orientativo; no analiza tu caso ni constituye una cotización personalizada. Los honorarios se acuerdan con el despacho.</p>
                 <button class="btn btn-gold w-full justify-center py-3" onclick="switchView('agendar')">📅 Agendar Asesoría con este Presupuesto</button>
             </div>
         </section>
@@ -536,9 +695,6 @@
 </section>
 </main>
 
-    <!-- MODAL PANEL ADMIN (ACCESO CON PIN 951940 O CÉDULA 14971373) -->
-
-
     <!-- FOOTER -->
     <footer class="bg-navy-950 border-t border-navy-800 text-slate-400 text-xs py-8 px-4 text-center space-y-2">
         <p class="text-slate-400 font-serif font-bold text-sm">LEGAL TECH OAXACA · FIRMA LEGAL DIGITAL</p>
@@ -556,13 +712,12 @@
     <script>
         function switchView(v) {
             document.getElementById('mobileNavigation').open = false;
-            ['view-home', 'view-materias', 'view-jurisprudencia', 'view-videoteca', 'view-ai', 'view-express', 'view-contratos', 'view-gestion', 'view-cotizador', 'view-agendar'].forEach(id => {
+            ['view-home', 'view-portal', 'view-planes', 'view-ideas', 'view-materias', 'view-jurisprudencia', 'view-videoteca', 'view-ai', 'view-express', 'view-contratos', 'view-gestion', 'view-cotizador', 'view-agendar'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el) el.style.display = 'none';
             });
             const target = document.getElementById('view-' + v);
             if(target) target.style.display = 'block';
-
             if(v === 'jurisprudencia') renderTesisList(tesisDataset);
             if(v === 'videoteca') renderVideoteca();
 
@@ -577,11 +732,8 @@
                 activeNav.classList.add('text-gold-400', 'font-bold');
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
         }
-
-
-
 
         function mostrarToast(msg) {
             const t = document.getElementById('ltCustomToast');
@@ -590,10 +742,6 @@
             t.style.display = 'flex';
             setTimeout(() => t.style.display = 'none', 3200);
         }
-
-
-
-
 
         // 12 Especialidades en Tarjetas
         const listaMaterias = [
@@ -797,6 +945,115 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
             }
         }
 
+        const siteAssistantMessages = [];
+        let siteAssistantPending = false;
+        let siteAssistantProposal = '';
+
+        function agregarMensajeAsistenteSitio(role, content) {
+            const message = document.createElement('p');
+            message.className = role === 'user'
+                ? 'text-sm text-white bg-navy-800 rounded-lg p-3 ml-6'
+                : 'text-sm text-slate-200 bg-navy-950 border border-slate-800 rounded-lg p-3 mr-6 whitespace-pre-wrap';
+            message.textContent = content;
+            document.getElementById('siteAssistantMessages').appendChild(message);
+            message.scrollIntoView({ block: 'nearest' });
+        }
+
+        function limpiarAsistenteSitio() {
+            if (siteAssistantPending) return;
+            siteAssistantMessages.length = 0;
+            siteAssistantProposal = '';
+            document.getElementById('siteAssistantMessages').replaceChildren();
+            agregarMensajeAsistenteSitio('assistant', 'Describe una mejora de contenido o interfaz para recibir una propuesta revisable.');
+            document.getElementById('siteAssistantInput').value = '';
+            document.getElementById('siteAssistantError').textContent = '';
+            document.getElementById('siteProposalPreview').textContent = '';
+            document.getElementById('siteProposalReview').classList.add('hidden');
+            document.getElementById('siteApprovedDraft').textContent = '';
+            document.getElementById('siteApprovedDraftPanel').classList.add('hidden');
+            document.getElementById('siteAssistantStatus').textContent = 'Describe una mejora para recibir una propuesta revisable.';
+        }
+
+        async function enviarIdeaAsistenteSitio(event) {
+            event.preventDefault();
+            if (siteAssistantPending) return;
+            const input = document.getElementById('siteAssistantInput');
+            const content = input.value.trim();
+            if (!content) return;
+
+            const status = document.getElementById('siteAssistantStatus');
+            const error = document.getElementById('siteAssistantError');
+            const sendButton = document.getElementById('siteAssistantSendButton');
+            const clearButton = document.getElementById('siteAssistantClearButton');
+            siteAssistantPending = true;
+            sendButton.disabled = true;
+            clearButton.disabled = true;
+            sendButton.textContent = 'Preparando...';
+            status.textContent = 'Generando propuesta para revisar...';
+            error.textContent = '';
+            siteAssistantProposal = '';
+            document.getElementById('siteProposalReview').classList.add('hidden');
+            document.getElementById('siteApprovedDraftPanel').classList.add('hidden');
+
+            const messages = [{ role: 'user', content }];
+            let totalLength = content.length;
+            for (let i = siteAssistantMessages.length - 1; i >= 0 && messages.length < 20; i--) {
+                const message = siteAssistantMessages[i];
+                if (totalLength + message.content.length > 12000) break;
+                messages.unshift(message);
+                totalLength += message.content.length;
+            }
+            const requestController = new AbortController();
+            const requestTimeout = setTimeout(() => requestController.abort(), 30000);
+            try {
+                const response = await fetch(chatLegalEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mode: 'site-editor', messages }),
+                    signal: requestController.signal
+                });
+                if (!response.ok) throw new Error('site_assistant_unavailable');
+                const data = await response.json();
+                if (!data || data.mode !== 'site-editor') throw new Error('site_editor_not_supported');
+                if (!data || typeof data.reply !== 'string' || !data.reply.trim()) throw new Error('invalid_site_assistant_response');
+                siteAssistantProposal = data.reply.trim();
+                siteAssistantMessages.push({ role: 'user', content }, { role: 'assistant', content: siteAssistantProposal.slice(0, 4000) });
+                if (siteAssistantMessages.length > 20) siteAssistantMessages.splice(0, siteAssistantMessages.length - 20);
+                agregarMensajeAsistenteSitio('user', content);
+                agregarMensajeAsistenteSitio('assistant', siteAssistantProposal);
+                if (input.value.trim() === content) input.value = '';
+                document.getElementById('siteProposalPreview').textContent = siteAssistantProposal;
+                document.getElementById('siteProposalReview').classList.remove('hidden');
+                document.getElementById('siteApprovedDraftPanel').classList.add('hidden');
+                const approveButton = document.getElementById('siteProposalApprove');
+                approveButton.disabled = false;
+                approveButton.textContent = 'Aprobar borrador de vista previa';
+                status.textContent = 'Propuesta lista para revisión.';
+            } catch (requestError) {
+                console.error('No se pudo obtener una propuesta:', requestError);
+                status.textContent = 'Servicio de IA no disponible.';
+                error.textContent = requestError.message === 'site_editor_not_supported'
+                    ? 'El servicio aún no confirma el modo de propuestas. Se necesita actualizar el Worker; tu texto no se ha borrado.'
+                    : 'No se pudo obtener una propuesta. Conserva tu texto e intenta de nuevo más tarde.';
+            } finally {
+                clearTimeout(requestTimeout);
+                siteAssistantPending = false;
+                sendButton.disabled = false;
+                clearButton.disabled = false;
+                sendButton.textContent = 'Proponer';
+                input.focus();
+            }
+        }
+
+        function aprobarPropuestaSitio() {
+            if (!siteAssistantProposal || siteAssistantPending) return;
+            document.getElementById('siteApprovedDraft').textContent = siteAssistantProposal;
+            document.getElementById('siteApprovedDraftPanel').classList.remove('hidden');
+            document.getElementById('siteProposalApprove').disabled = true;
+            document.getElementById('siteProposalApprove').textContent = 'Borrador aprobado';
+            document.getElementById('siteAssistantStatus').textContent = 'Vista previa local aprobada. No se editaron archivos ni se publicó el sitio.';
+        }
+
         // ============================================================
         // VISUALIZADOR DE TESIS Y JURISPRUDENCIAS SJF
         // ============================================================
@@ -916,7 +1173,7 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
                 <button type="button" class="w-full text-left p-3 bg-navy-950 border border-slate-800 hover:border-gold-500 rounded-xl cursor-pointer transition space-y-1" onclick="selectScjnVideo(${i})">
                     <div class="flex justify-between text-[10px]">
                         <span class="px-1.5 py-0.5 rounded font-bold ${i === 0 ? 'bg-red-700 text-white' : 'bg-slate-800 text-slate-300'}">${v.badge}</span>
-                        <span class="text-slate-400">SCJN Oficial</span>
+                        <span class="text-white">SCJN Oficial</span>
                     </div>
                     <div class="text-xs font-bold text-white line-clamp-2">${v.title}</div>
                 </button>
@@ -932,10 +1189,6 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
             document.getElementById('scjnVideoDesc').textContent = v.desc;
             mostrarToast("Lista seleccionada: " + v.title);
         }
-
-        // LEXCONTROL
-
-
 
         function registrarCitaPro() {
             const fields = {
@@ -978,6 +1231,7 @@ Dictaminado por: Lic. Daniel Carrasco Enríquez · Legal Tech Oaxaca`;
             switchView('home');
         });
     </script>
+    <script type="module" src="public-content.mjs"></script>
     <script defer src="app-install.js"></script>
 </body>
 </html>

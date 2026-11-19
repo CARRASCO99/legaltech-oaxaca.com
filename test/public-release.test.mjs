@@ -30,6 +30,28 @@ test('public pages remove simulated access and exposed LexControl records', () =
     assert.equal(facts[1].trim(), '');
 });
 
+test('public improvements use the supplied emblem and link to official sources', async () => {
+    assert.match(html, /src="icons\/emblema-legaltech\.svg" alt=""/);
+    assert.match(html, /prefers-reduced-motion: reduce/);
+    assert.match(html, /Directorio de fuentes jurídicas/);
+    assert.match(html, /https:\/\/www\.dof\.gob\.mx\//);
+    assert.match(html, /Esta pantalla es una demostración/);
+    const emblem = await readFile(new URL('../icons/emblema-legaltech.svg', import.meta.url), 'utf8');
+    assert.match(emblem, /<svg\b/);
+    assert.doesNotMatch(emblem, /<script\b|<image\b/i);
+});
+
+test('search metadata identifies the public organization without an unverified address', () => {
+    const markup = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    assert.ok(markup);
+    const organization = JSON.parse(markup[1]);
+    assert.equal(organization['@type'], 'Organization');
+    assert.equal(organization.url, 'https://www.legaltechoaxacacorporativojuridico.com/');
+    assert.equal(organization.telephone, '+52-951-940-8062');
+    assert.equal(organization.address, undefined);
+    assert.match(html, /property="og:image"/);
+});
+
 test('public page restores zoom, readable text, accessible controls, and valid icons', async () => {
     assert.match(html, /name="viewport" content="width=device-width, initial-scale=1\.0"/);
     assert.doesNotMatch(html, /maximum-scale|user-scalable=no|text-slate-500|text-slate-600/);

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F4D06F"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#9E7B1C"/>
+    </linearGradient>
+  </defs>
+  <polygon points="50,4 92,27 92,73 50,96 8,73 8,27" stroke="url(#goldGrad)" stroke-width="3.5" fill="#0B0E14"/>
+  <polygon points="50,12 84,31 84,69 50,88 16,69 16,31" stroke="url(#goldGrad)" stroke-width="1.2" stroke-dasharray="4 3" fill="none"/>
+  <line x1="50" y1="24" x2="50" y2="74" stroke="url(#goldGrad)" stroke-width="3"/>
+  <line x1="28" y1="36" x2="72" y2="36" stroke="url(#goldGrad)" stroke-width="2.5"/>
+  <path d="M22 52 L28 36 L34 52 Z M66 52 L72 36 L78 52 Z" stroke="url(#goldGrad)" stroke-width="1.8" fill="rgba(212,175,55,0.2)"/>
+  <circle cx="50" cy="22" r="3.5" fill="#F4D06F"/>
+  <circle cx="28" cy="36" r="2.5" fill="#F4D06F"/>
+  <circle cx="72" cy="36" r="2.5" fill="#F4D06F"/>
+  <path d="M34 74 H66 V68 H40 V63 H60" stroke="url(#goldGrad)" stroke-width="2.2" fill="none"/>
+</svg>

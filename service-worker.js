@@ -1,9 +1,9 @@
-const CACHE_NAME = 'legaltech-oaxaca-shell-v3';
+const CACHE_NAME = 'legaltech-oaxaca-shell-v4';
 
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(['./', './manifest.webmanifest', './icons/legaltech-icon.svg', './icons/legaltech-192.png', './icons/legaltech-512.png', './app-install.js']))
+            .then(cache => cache.addAll(['./', './manifest.webmanifest', './icons/legaltech-icon.svg', './icons/emblema-legaltech.svg', './icons/legaltech-192.png', './icons/legaltech-512.png', './app-install.js']))
     );
     self.skipWaiting();
 });
@@ -26,7 +26,7 @@ self.addEventListener('fetch', event => {
     }
 
     if (request.mode !== 'navigate') {
-        const cachedFiles = ['app-install.js', 'manifest.webmanifest', 'icons/legaltech-icon.svg', 'icons/legaltech-192.png', 'icons/legaltech-512.png'];
+        const cachedFiles = ['app-install.js', 'manifest.webmanifest', 'icons/legaltech-icon.svg', 'icons/emblema-legaltech.svg', 'icons/legaltech-192.png', 'icons/legaltech-512.png'];
         const cacheable = cachedFiles.some(path => url.href === new URL(path, self.registration.scope).href);
         if (cacheable) {
             event.respondWith(caches.open(CACHE_NAME).then(async cache => (await cache.match(request)) || fetch(request)));
